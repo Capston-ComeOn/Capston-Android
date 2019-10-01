@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="200dp"
+  android:background="#404040"
+  android:gravity="center"
+  android:orientation="horizontal"
+  android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+  <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="144dp"
+    android:layout_height="wrap_content"
+
+    tools:srcCompat="@tools:sample/avatars[1]" />
+
+
+  <TextView
+    android:id="@+id/mypage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="로그인이 필요합니다"
+    android:textSize="30dp" />
+
+</LinearLayout>

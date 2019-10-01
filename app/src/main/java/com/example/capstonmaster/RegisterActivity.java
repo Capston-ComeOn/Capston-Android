@@ -1,10 +1,10 @@
 package com.example.capstonmaster;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     setContentView(R.layout.activity_register);
 
     //아이디 값 찾아주기
-    et_id = findViewById(R.id.et_id);
+    et_id = findViewById(R.id.et_pass);
     et_pass = findViewById(R.id.et_pass);
     et_name = findViewById(R.id.et_name);
     et_age = findViewById(R.id.et_age);

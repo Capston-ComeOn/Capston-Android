@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/free"
+            android:title="자유 게시판" />
+        <item android:title="학부생 게시판">
+            <menu>
+                <item
+                    android:id="@+id/notice"
+                    android:title="공지사항" />
+                <item
+                    android:id="@+id/grade_cal"
+                    android:title="학점계산" />
+                <item
+                    android:id="@+id/club_intro"
+                    android:title="학과동아리소개" />
+                <item
+                    android:id="@+id/advice"
+                    android:title="선배의조언" />
+            </menu>
+        </item>
+        <item android:title="추천강좌소개 게시판">
+            <menu>
+                <item
+                    android:id="@+id/first"
+                    android:title="1학년" />
+                <item
+                    android:id="@+id/second"
+                    android:title="2학년" />
+                <item
+                    android:id="@+id/third"
+                    android:title="3학년" />
+                <item
+                    android:id="@+id/fourth"
+                    android:title="4학년" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/pro_intro"
+            android:title="교수님소개 게시판" />
+      <item
+        android:id="@+id/Em_infor"
+        android:title="취업정보 게시판" />
+    </group>
+</menu>

@@ -5,15 +5,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+
 import androidx.navigation.NavDestination;
+
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -90,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
       .setDrawerLayout(drawLayout)
       .build();
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
 //         ActionBar에도 Top-Level-Destination 설정 하면,
 //Top-Level-Destincation이 아니라면 Actionbar에 뒤로 가기[<-] 가 표현된다
     NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -101,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Visible Fragment label Name: "+destination.getLabel(),Toast.LENGTH_LONG).show();
       }
     });
+
+    NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+    NavigationUI.setupWithNavController(navigationView, navController);
+
+
 
                /* navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                     @Override

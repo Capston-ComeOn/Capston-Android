@@ -12,52 +12,51 @@
         android:text="컴 온"
         android:textColor="#2196F3"
         android:textSize="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.88" />
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="93dp"
-        android:layout_height="72dp"
-        android:layout_gravity="center"
-        android:hint="아이디"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
+<!--    <EditText-->
+<!--        android:id="@+id/username"-->
+<!--        android:layout_width="93dp"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:hint="아이디"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:selectAllOnFocus="true"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/password"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.942" />-->
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="93dp"
-        android:layout_height="72dp"
-        android:layout_gravity="center"
+<!--    <EditText-->
+<!--        android:id="@+id/password"-->
+<!--        android:layout_width="93dp"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:layout_gravity="center"-->
 
-        android:hint="패스워드"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52" />
+<!--        android:hint="패스워드"-->
+<!--        android:imeOptions="actionDone"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:selectAllOnFocus="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.52" />-->
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="131dp"
-        android:layout_height="102dp"
-        android:layout_gravity="center"
-        android:enabled="false"
-        android:text="로그인"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+<!--    <Button-->
+<!--        android:id="@+id/login"-->
+<!--        android:layout_width="131dp"-->
+<!--        android:layout_height="102dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:enabled="false"-->
+<!--        android:text="로그인"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.712" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

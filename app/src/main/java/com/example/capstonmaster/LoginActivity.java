@@ -1,10 +1,12 @@
 package com.example.capstonmaster;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
   TextView idText;
   TextView passText;
   String access_token;
+  SharedPreferences sf;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -43,8 +47,14 @@ public class LoginActivity extends AppCompatActivity {
       public void onClick(View view) {
         System.out.println("액세스 토큰 발급요청");
         getAccessToken();
-//        Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //        startActivity(intent);
+        if(access_token!=null) {
+          Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+          startActivity(intent);
+        }else{
+          Toast.makeText(LoginActivity.this, "토큰없음", Toast.LENGTH_SHORT).show();
+        }
       }
     });
     btn_register.setOnClickListener(new Button.OnClickListener(){
@@ -132,30 +142,18 @@ public class LoginActivity extends AppCompatActivity {
         try {
           JSONObject jsonObject = new JSONObject(response.body().string());
           access_token = jsonObject.get("access_token").toString();
+
+          sf= getSharedPreferences("pref", MODE_PRIVATE);
+          SharedPreferences.Editor editor=sf.edit();
+          editor.putString("userToken", access_token);
+          editor.commit();
+
           System.out.println("성공");
           System.out.println(access_token);
         } catch (JSONException e) {
           e.printStackTrace();
         }
       }
-
-//      @Override
-//      public void onFailure(final Request request, final IOException e) {
-//        System.out.println(e);
-//        System.out.println("실패");
-//      }
-//
-//      @Override
-//      public void onResponse(Response response) throws IOException {
-//        try {
-//          JSONObject jsonObject = new JSONObject(response.body().string());
-//          access_token = jsonObject.get("access_token").toString();
-//          System.out.println("성공");
-//          System.out.println(access_token);
-//        } catch (JSONException e) {
-//          e.printStackTrace();
-//        }
-//      }
     });
   }
 }

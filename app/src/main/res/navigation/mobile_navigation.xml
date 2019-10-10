@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/login"
         android:name="com.example.capstonmaster.board.login.Loginfragment"
-        android:label="login"
+        android:label="컴 온"
         tools:layout="@layout/frament_login" />
     <fragment
         android:id="@+id/free"
         android:name="com.example.capstonmaster.board.free_board.Freefragment"
-        android:label="free"
+        android:label="자유게시판"
         tools:layout="@layout/fragment_free" />
 
     <fragment
         android:id="@+id/notice"
         android:name="com.example.capstonmaster.board.notice_board.Noticefragment"
-        android:label="notice"
+        android:label="공지사항"
         tools:layout="@layout/fragment_notice" />
 
 </navigation>

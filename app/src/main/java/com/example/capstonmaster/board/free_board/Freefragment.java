@@ -3,6 +3,7 @@ package com.example.capstonmaster.board.free_board;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -29,23 +30,21 @@ ListView listView;
         final View root = inflater.inflate(R.layout.fragment_free, container, false);
         listView=root.findViewById(R.id.free_list);
         list_itemArrayList=new ArrayList<>();
-
-        list_itemArrayList.add(new List_item("보라돌이","제목1",new Date(System.currentTimeMillis()),"내용1"));
-        list_itemArrayList.add(new List_item("나나","제목1",new Date(System.currentTimeMillis()),"내용2"));
-        list_itemArrayList.add(new List_item("뚜","제목1",new Date(System.currentTimeMillis()),"내용3"));
-        list_itemArrayList.add(new List_item("보라돌이","제목1",new Date(System.currentTimeMillis()),"내용1"));
-        list_itemArrayList.add(new List_item("나나","제목1",new Date(System.currentTimeMillis()),"내용2"));
-        list_itemArrayList.add(new List_item("뚜","제목1",new Date(System.currentTimeMillis()),"내용3")); list_itemArrayList.add(new List_item("보라돌이","제목1",new Date(System.currentTimeMillis()),"내용1"));
-        list_itemArrayList.add(new List_item("나나","제목1",new Date(System.currentTimeMillis()),"내용2"));
-        list_itemArrayList.add(new List_item("뚜","제목1",new Date(System.currentTimeMillis()),"내용3")); list_itemArrayList.add(new List_item("보라돌이","제목1",new Date(System.currentTimeMillis()),"내용1"));
-        list_itemArrayList.add(new List_item("나나","제목1",new Date(System.currentTimeMillis()),"내용2"));
-        list_itemArrayList.add(new List_item("뚜","제목1",new Date(System.currentTimeMillis()),"내용3"));
-        list_itemArrayList.add(new List_item("보라돌이","제목1",new Date(System.currentTimeMillis()),"내용1"));
-        list_itemArrayList.add(new List_item("나나","제목1",new Date(System.currentTimeMillis()),"내용2"));
-        list_itemArrayList.add(new List_item("뚜","제목1",new Date(System.currentTimeMillis()),"내용3"));
-        list_itemArrayList.add(new List_item("보라돌이","제목1",new Date(System.currentTimeMillis()),"내용1"));
-        list_itemArrayList.add(new List_item("나나","제목1",new Date(System.currentTimeMillis()),"내용2"));
-        list_itemArrayList.add(new List_item("뚜","제목1",new Date(System.currentTimeMillis()),"내용3"));
+        list_itemArrayList.add(new List_item("보라돌이","안녕","10월 9일","반가워요 하하하ㅏㅋㅋㅋㅋㅋㅋㅋㅋㅠㅠㅠㅠㅠㄴㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("나나","반가워","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("뽀","ㅋㅋㅋㅋㅋㅋㅋ","10월 9일","ㅎㅎ"));
+        list_itemArrayList.add(new List_item("보라돌이","안녕","10월 9일","반가워요 하하하ㅏㅋㅋㅋㅋㅋㅋㅋㅋㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("나나","반가워","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("뽀","ㅋㅋㅋㅋㅋㅋㅋ","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("보라돌이","안녕","10월 9일","반가워요 하하하ㅏㅋㅋㅋㅋㅋㅋㅋㅋㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("나나","반가워","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("뽀","ㅋㅋㅋㅋㅋㅋㅋ","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("보라돌이","안녕","10월 9일","반가워요 하하하ㅏㅋㅋㅋㅋㅋㅋㅋㅋㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("나나","반가워","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("뽀","ㅋㅋㅋㅋㅋㅋㅋ","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("보라돌이","안녕","10월 9일","반가워요 하하하ㅏㅋㅋㅋㅋㅋㅋㅋㅋㅠㅠㅠㅠㅠㅠㅠㅠㅠㅁㄴㅇ"));
+        list_itemArrayList.add(new List_item("나나","반가워","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
+        list_itemArrayList.add(new List_item("뽀","ㅋㅋㅋㅋㅋㅋㅋ","10월 9일","ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ"));
 
 
 
@@ -72,4 +71,5 @@ ListView listView;
 //        });
         return root;
     }
+
 }

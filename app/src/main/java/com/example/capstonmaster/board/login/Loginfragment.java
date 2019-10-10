@@ -1,5 +1,6 @@
 package com.example.capstonmaster.board.login;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,20 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.capstonmaster.R;
+import com.hamza.slidingsquaresloaderview.SlidingSquareLoaderView;
 
 public class Loginfragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.frament_login, container, false);
-//      Button btn_register = findViewById(R.id.btn_register);
-//      회원가입 버튼을 클릭 시 수행
-//      btn_register.setOnClickListener(new View.OnClickListener(){
-//      @Override
-//      public void onClick(View view){
-//      Intent intent = new Intent(Loginfragment.this, RegisterActivity.class);
-//      }
-//      });
+        SlidingSquareLoaderView slidingview = root.findViewById(R.id.sliding_view2);
+        slidingview.start();    // starts the sliding
+//        slidingview.stop();     // stops the sliding
+        slidingview.setDuration(10);   // sets duration of sliding
+        slidingview.setDelay(1);  // sets delay period before sliding
+        slidingview.setColor(Color.parseColor("#2196F3"));
         return root;
     }
 }

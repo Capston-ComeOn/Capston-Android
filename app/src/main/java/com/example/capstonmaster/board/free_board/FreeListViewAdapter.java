@@ -33,10 +33,15 @@ public class FreeListViewAdapter extends BaseAdapter {
             date_textView = (TextView) convertView.findViewById(R.id.f_date);
             nickname_textView = (TextView) convertView.findViewById(R.id.f_nickname);
 
+            String content=free_itemList.get(position).getContent();
+            if(content.length()>20){
+                content=content.substring(0,20)+"...";
+            }
+
             nickname_textView.setText(free_itemList.get(position).getNickname());
             title_textView.setText(free_itemList.get(position).getTitle());
-            content_textView.setText(free_itemList.get(position).getContent());
-            date_textView.setText(free_itemList.get(position).getWrite_date().toString());
+            content_textView.setText(content);
+            date_textView.setText(free_itemList.get(position).getWrite_date());
         }
         return convertView;
     }

@@ -4,59 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="279dp"
         android:layout_height="109dp"
+        android:layout_marginTop="92dp"
         android:gravity="center"
         android:text="컴 온"
         android:textColor="#2196F3"
         android:textSize="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hamza.slidingsquaresloaderview.SlidingSquareLoaderView
+        android:id="@+id/sliding_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="316dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
-
-<!--    <EditText-->
-<!--        android:id="@+id/username"-->
-<!--        android:layout_width="93dp"-->
-<!--        android:layout_height="72dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:hint="아이디"-->
-<!--        android:inputType="textEmailAddress"-->
-<!--        android:selectAllOnFocus="true"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/password"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.942" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/password"-->
-<!--        android:layout_width="93dp"-->
-<!--        android:layout_height="72dp"-->
-<!--        android:layout_gravity="center"-->
-
-<!--        android:hint="패스워드"-->
-<!--        android:imeOptions="actionDone"-->
-<!--        android:inputType="textPassword"-->
-<!--        android:selectAllOnFocus="true"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.52" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/login"-->
-<!--        android:layout_width="131dp"-->
-<!--        android:layout_height="102dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:enabled="false"-->
-<!--        android:text="로그인"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.712" />-->
+        app:sslv_color="@color/colorPrimary"
+        app:sslv_delay="15"
+        app:sslv_duration="150"
+        app:sslv_gap="2dp"
+        app:sslv_square_length="12dp"
+        app:sslv_start="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

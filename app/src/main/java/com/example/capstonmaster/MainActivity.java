@@ -3,6 +3,7 @@ package com.example.capstonmaster;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -22,7 +23,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.capstonmaster.board.free_board.FreeListViewAdapter;
+import com.example.capstonmaster.dto.List_item;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
   private AppBarConfiguration mAppBarConfiguration;
@@ -56,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
     switch (item.getItemId()) {
       case R.id.action_search:
         Toast.makeText(getApplicationContext(), " 찾기", Toast.LENGTH_SHORT).show();
+//        FreeListViewAdapter adapter;
+//        ArrayList<List_item> list_itemArrayList=new ArrayList<>();
+//        for(int i=0;i<list_itemArrayList.size();i++){
+//          if(list_itemArrayList.get(i).getNickname().equals("보라돌이")){
+//            list_itemArrayList.add(list_itemArrayList.get(i));
+//          }
+//        }
+//        ListView listView;
+//        listView=findViewById(R.id.free_list);
+//        adapter= new FreeListViewAdapter(getApplicationContext(),list_itemArrayList);
+//        listView.setAdapter(adapter);
         return true;
       case R.id.action_settings:
         Toast.makeText(getApplicationContext(), " 설정", Toast.LENGTH_SHORT).show();
@@ -90,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     //프래그먼트 장착
     mAppBarConfiguration = new AppBarConfiguration.Builder(
-      R.id.free, R.id.notice)
+      R.id.login)
       .setDrawerLayout(drawLayout)
       .build();
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -103,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
 
       public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-        Toast.makeText(MainActivity.this, "Visible Fragment label Name: "+destination.getLabel(),Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, destination.getLabel(),Toast.LENGTH_LONG).show();
       }
     });
 

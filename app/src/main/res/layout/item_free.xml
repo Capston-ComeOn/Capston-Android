@@ -1,46 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="0dp"
         android:layout_weight="4"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/f_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:text="타이틀" />
-
-        <TextView
-            android:id="@+id/f_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="내용~~~~~~~~~~~~~~~~~~~~~~~~~~~~" />
-
-        <TextView
-            android:id="@+id/f_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="닉네임" />
-    </LinearLayout>
-
-    <LinearLayout
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/f_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="3">
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:text="타이틀" />
+
+    <TextView
+        android:id="@+id/f_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/f_title"
+        android:layout_marginLeft="10dp"
+        android:text="내용~~~~~~~~~~~~~~~~~~~~~~~~~~~~" />
+
+    <TextView
+        android:id="@+id/f_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/f_content"
+        android:textColor="#969292"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:text="닉네임" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="29dp"
+        android:layout_height="73dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_weight="1">
+
 
         <TextView
             android:id="@+id/f_date"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
             android:text="날짜" />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/h_image"
+            android:layout_width="19dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/f_date"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/heart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/f_date"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:text="3"
+            android:textColor="#F00909" />
+    </RelativeLayout>
 </LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".board.free_board.FreeListDetail">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -12,51 +13,140 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/nickname_detail"
-        android:layout_width="109dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="297dp"
-        android:layout_marginRight="297dp"
-        android:text="타이틀" />
+  <TextView
+    android:id="@+id/nickname_detail"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_below="@+id/title_detail"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
 
-    <TextView
-        android:id="@+id/title_detail"
-        android:layout_width="98dp"
-        android:layout_height="27dp"
-        android:layout_below="@+id/nickname_detail"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="312dp"
-        android:layout_marginRight="312dp"
-        android:text="title" />
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="0dp"
 
-    <TextView
-        android:id="@+id/content_detail"
-        android:layout_width="73dp"
-        android:layout_height="34dp"
-        android:layout_below="@+id/title_detail"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="508dp"
-        android:text="content" />
+    android:layout_marginRight="195dp"
+    android:text="neckname"
+    android:textSize="15sp" />
 
-    <androidx.appcompat.widget.Toolbar
+  <View
+    android:id="@+id/division_line"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_below="@+id/nickname_detail"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="10dp"
+
+    android:layout_marginRight="15dp"
+    android:background="#ECEFF1" />
+
+  <View
+    android:id="@+id/division_line2"
+    android:layout_width="match_parent"
+    android:layout_height="10dp"
+    android:layout_below="@+id/content_detail"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginStart="0dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginRight="0dp"
+    android:background="#ECEFF1" />
+
+  <TextView
+    android:id="@+id/title_detail"
+    android:layout_width="match_parent"
+    android:layout_height="46dp"
+    android:layout_below="@+id/toolbar"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="0dp"
+
+    android:layout_marginRight="60dp"
+    android:text="title"
+    android:textSize="24sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/content_detail"
+    android:layout_width="match_parent"
+    android:layout_height="114dp"
+    android:layout_below="@+id/division_line"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="0dp"
+    android:text="content"
+    android:textSize="14sp" />
+
+  <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#14A085"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-<!--    <EditText-->
+  <EditText
+    android:id="@+id/comment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginBottom="0dp"
+    android:layout_toStartOf="@+id/commentButton"
+    android:layout_toLeftOf="@+id/commentButton"
+    android:ems="10"
+    android:hint="댓글을 입력하세요."
+    android:inputType="textPersonName" />
+
+  <Button
+    android:id="@+id/commentButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentBottom="true"
+
+    android:layout_marginRight="0dp"
+    android:layout_marginBottom="0dp"
+    android:background="#CFD8DC"
+    android:textColor="#000000"
+    android:text="등록" />
+
+  <TextView
+    android:id="@+id/commentWindow"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_above="@+id/comment"
+    android:layout_below="@+id/division_line2"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginBottom="0dp"
+    android:text="commentWindow" />
+
+  <!--    <EditText-->
 <!--        android:id="@+id/comment_detail"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->

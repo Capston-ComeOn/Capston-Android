@@ -78,9 +78,9 @@ public class LoginActivity extends AppCompatActivity {
     OkHttpClient client = new OkHttpClient();
 
     final Request request = new Request.Builder()
-            .header(getString(R.string.Authorization), "Bearer "+access_token)
-            .url(getString(R.string.ip)+"/api/article")
-            .build();
+      .header(getString(R.string.Authorization), "Bearer "+access_token)
+      .url(getString(R.string.ip)+"/api/article")
+      .build();
     client.newCall(request).enqueue(new Callback() {
       @Override
       public void onFailure(Call call, IOException e) {
@@ -121,15 +121,15 @@ public class LoginActivity extends AppCompatActivity {
   public void getAccessToken(){
     OkHttpClient client = new OkHttpClient();
     RequestBody requestBody = new FormBody.Builder()
-            .add("grant_type", "password")
-            .add("username",idText.getText().toString())
-            .add("password",passText.getText().toString())
-            .build();
+      .add("grant_type", "password")
+      .add("username",idText.getText().toString())
+      .add("password",passText.getText().toString())
+      .build();
     final Request request = new Request.Builder()
-            .header(getString(R.string.Authorization), Credentials.basic("id","secret"))
-            .url(getString(R.string.ip)+"/oauth/token")
-            .post(requestBody)
-            .build();
+      .header(getString(R.string.Authorization), Credentials.basic("id","secret"))
+      .url(getString(R.string.ip)+"/oauth/token")
+      .post(requestBody)
+      .build();
     client.newCall(request).enqueue(new Callback() {
       @Override
       public void onFailure(Call call, IOException e) {

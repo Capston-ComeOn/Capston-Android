@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_weight="4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <TextView
         android:id="@+id/f_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:text="타이틀" />
-
     <TextView
         android:id="@+id/f_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/f_title"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#969292"
         android:text="내용~~~~~~~~~~~~~~~~~~~~~~~~~~~~" />
 
     <TextView
@@ -30,57 +31,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/f_content"
-        android:textColor="#969292"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="10dp"
+        android:textColor="#5B66A8"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
         android:text="닉네임" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="29dp"
-        android:layout_height="73dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_weight="1">
-
-
-        <TextView
-            android:id="@+id/f_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="30dp"
-            android:gravity="center"
-            android:text="날짜" />
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
         <ImageView
             android:id="@+id/h_image"
             android:layout_width="19dp"
             android:layout_height="30dp"
-            android:layout_below="@+id/f_date"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/heart" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/f_date"
-
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="13dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
+            android:layout_marginBottom="10dp"
             android:text="3"
-            android:textColor="#F00909" />
-    </RelativeLayout>
+            android:textColor="#A7A7A7" />
+        <TextView
+            android:id="@+id/f_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#A7A7A7"
+            android:text="날짜" />
+    </LinearLayout>
 </LinearLayout>

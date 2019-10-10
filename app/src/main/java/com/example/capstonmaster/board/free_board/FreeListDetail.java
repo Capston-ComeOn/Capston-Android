@@ -19,8 +19,8 @@ public class FreeListDetail extends AppCompatActivity {
         setContentView(R.layout.activity_free_list_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
 
         TextView nickname=findViewById(R.id.nickname_detail);
         TextView title =findViewById(R.id.title_detail);

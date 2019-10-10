@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.NavController;
 
 import androidx.navigation.NavDestination;
@@ -22,32 +23,25 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.capstonmaster.board.free_board.FreeListViewAdapter;
 import com.example.capstonmaster.dto.List_item;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
   private AppBarConfiguration mAppBarConfiguration;
-  //private Button btn_register;
-
-
+  private ViewPager viewPager;
+  private SectionsPageAdapter sectionsPageAdapter;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     this.InitializeLayout();
 
-  // btn_register = findViewById(R.id.btn_register);
-    //회원가입 버튼을 클릭 시 수행
-    //btn_register.setOnClickListener(new View.OnClickListener(){
-      //@Override
-      //public void onClick(View view){
-        //Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-      //}
-    //});
   }
 
   @Override
@@ -86,6 +80,30 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
+    sectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+    viewPager=findViewById(R.id.viewpager);
+    viewPager.setAdapter(sectionsPageAdapter);
+    TabLayout tabLayout = findViewById(R.id.tabs);
+//    tabLayout.setupWithViewPager(viewPager);
+    viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+    tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager){
+      @Override
+      public void onTabSelected(TabLayout.Tab tab) {
+        // TODO : tab의 상태가 선택 상태로 변경.
+      }
+
+      @Override
+      public void onTabUnselected(TabLayout.Tab tab) {
+        // TODO : tab의 상태가 선택되지 않음으로 변경.
+      }
+
+      @Override
+      public void onTabReselected(TabLayout.Tab tab) {
+        // TODO : 이미 선택된 tab이 다시
+      }
+    });
+
+
     //App Bar의 좌측 영영에 Drawer를 Open 하기 위한 Incon 추가
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
@@ -106,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     //프래그먼트 장착
     mAppBarConfiguration = new AppBarConfiguration.Builder(
-      R.id.login)
+      R.id.login,R.id.free,R.id.notice)
       .setDrawerLayout(drawLayout)
       .build();
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

@@ -47,14 +47,14 @@ public class LoginActivity extends AppCompatActivity {
       public void onClick(View view) {
         System.out.println("액세스 토큰 발급요청");
         getAccessToken();
-//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//        startActivity(intent);
-        if(access_token!=null) {
-          Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-          startActivity(intent);
-        }else{
-          Toast.makeText(LoginActivity.this, "토큰없음", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+//        if(access_token!=null) {
+//          Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//          startActivity(intent);
+//        }else{
+//          Toast.makeText(LoginActivity.this, "토큰없음", Toast.LENGTH_SHORT).show();
+//        }
       }
     });
     btn_register.setOnClickListener(new Button.OnClickListener(){

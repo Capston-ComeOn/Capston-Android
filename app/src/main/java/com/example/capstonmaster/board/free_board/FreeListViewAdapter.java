@@ -35,7 +35,7 @@ public class FreeListViewAdapter extends BaseAdapter {
 
             String content=free_itemList.get(position).getContent();
             if(content.length()>20){
-                content=content.substring(0,20)+"...";
+                content=content.substring(0,20)+"...더보기.";
             }
 
             nickname_textView.setText(free_itemList.get(position).getNickname());

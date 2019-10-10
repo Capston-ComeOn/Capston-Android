@@ -30,6 +30,7 @@ public class FreeListDetail extends AppCompatActivity {
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
     //getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
 
     TextView nickname=findViewById(R.id.nickname_detail);

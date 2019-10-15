@@ -36,7 +36,7 @@ public class FreeListDetail extends AppCompatActivity {
     TextView nickname=findViewById(R.id.nickname_detail);
     TextView title =findViewById(R.id.title_detail);
     TextView content = findViewById(R.id.content_detail);
-    TextView commentwindow = findViewById(R.id.commentWindow);
+    //TextView commentwindow = findViewById(R.id.commentWindow);
     Button commentButton = (Button) findViewById(R.id.commentButton);
 
     Intent intent = getIntent();

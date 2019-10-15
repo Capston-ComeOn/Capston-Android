@@ -12,8 +12,8 @@
                     android:id="@+id/notice"
                     android:title="공지사항" />
                 <item
-                    android:id="@+id/grade_cal"
-                    android:title="학점계산" />
+                    android:id="@+id/mento_menti"
+                    android:title="멘토/멘티게시판" />
                 <item
                     android:id="@+id/club_intro"
                     android:title="학과동아리소개" />

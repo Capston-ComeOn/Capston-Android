@@ -2,24 +2,24 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/login">
+    android:id="@+id/mobile_navigation">
+<!--    app:startDestination="@+id/login">-->
 
-    <fragment
-        android:id="@+id/login"
-        android:name="com.example.capstonmaster.board.login.Loginfragment"
-        android:label="컴 온"
-        tools:layout="@layout/frament_login" />
-    <fragment
-        android:id="@+id/free"
-        android:name="com.example.capstonmaster.board.free_board.Freefragment"
-        android:label="자유게시판"
-        tools:layout="@layout/fragment_free" />
+<!--    <fragment-->
+<!--        android:id="@+id/login"-->
+<!--        android:name="com.example.capstonmaster.board.login.Loginfragment"-->
+<!--        android:label="컴 온"-->
+<!--        tools:layout="@layout/frament_login" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/free"-->
+<!--        android:name="com.example.capstonmaster.board.free_board.Freefragment"-->
+<!--        android:label="자유게시판"-->
+<!--        tools:layout="@layout/fragment_free" />-->
 
-    <fragment
-        android:id="@+id/notice"
-        android:name="com.example.capstonmaster.board.notice_board.Noticefragment"
-        android:label="공지사항"
-        tools:layout="@layout/fragment_notice" />
+<!--    <fragment-->
+<!--        android:id="@+id/notice"-->
+<!--        android:name="com.example.capstonmaster.board.notice_board.Noticefragment"-->
+<!--        android:label="공지사항"-->
+<!--        tools:layout="@layout/fragment_notice" />-->
 
 </navigation>

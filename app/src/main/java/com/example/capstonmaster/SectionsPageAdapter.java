@@ -23,7 +23,7 @@ public class SectionsPageAdapter extends FragmentPagerAdapter {
             case 2:
                 return new Noticefragment();
             default:
-                return new Loginfragment();
+                return new Freefragment();
         }
     }
 

@@ -15,6 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:dividerHeight="4dp"
-        android:divider="#D5EAF8"
+        android:divider="#ECEFF1"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

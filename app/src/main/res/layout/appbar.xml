@@ -22,17 +22,19 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#0074a8"
-            app:tabIndicatorColor="#ff8b57"
+            app:tabIndicatorColor="#9B9999"
             app:tabTextAppearance="@style/TextAppearance.AppCompat.Display1">
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="메인페이지"/>
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/free"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="자유게시판"/>
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/notice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="공지사항"/>
@@ -45,6 +47,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
-    <include layout="@layout/content_main" />
+<!--    <include layout="@layout/content_main" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

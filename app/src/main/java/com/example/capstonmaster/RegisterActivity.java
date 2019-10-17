@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.capstonmaster.dto.AccountDto;
+import com.example.capstonmaster.dto.Author;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
     String lastname = RglastnameText.getText().toString();
     String firstname = RgfirstnameText.getText().toString();
     String password = RgpassText.getText().toString();
-    String json = gson.toJson(new AccountDto(email,password,lastname+firstname));
+    String json = gson.toJson(new Author(email,password,lastname+firstname));
 
 
     final Request request = new Request.Builder()

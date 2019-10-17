@@ -1,12 +1,14 @@
 package com.example.capstonmaster.dto;
 
-public class AccountDto {
+import java.io.Serializable;
+
+public class Author implements Serializable {
 
     private String email;
     private String password;
     private String name;
 
-    public AccountDto(String email, String password, String name) {
+    public Author(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;

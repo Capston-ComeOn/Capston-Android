@@ -7,19 +7,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.capstonmaster.dto.List_item;
+import com.example.capstonmaster.dto.Board;
 import com.example.capstonmaster.R;
 
 import java.util.ArrayList;
 
 public class FreeListViewAdapter extends BaseAdapter {
     Context context;
-    ArrayList<List_item> free_itemList;
+    ArrayList<Board> free_itemList;
     TextView nickname_textView;
     TextView title_textView;
     TextView date_textView;
     TextView content_textView;
-    public FreeListViewAdapter(Context context, ArrayList<List_item> free_itemList) {
+    public FreeListViewAdapter(Context context, ArrayList<Board> free_itemList) {
         this.context = context;
         this.free_itemList = free_itemList;
     }
@@ -29,19 +29,19 @@ public class FreeListViewAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_free, null);
 
             title_textView = convertView.findViewById(R.id.f_title);
-            content_textView = (TextView) convertView.findViewById(R.id.f_content);
-            date_textView = (TextView) convertView.findViewById(R.id.f_date);
-            nickname_textView = (TextView) convertView.findViewById(R.id.f_nickname);
+            content_textView =  convertView.findViewById(R.id.f_content);
+            date_textView =  convertView.findViewById(R.id.f_date);
+            nickname_textView =  convertView.findViewById(R.id.f_nickname);
 
-            String content=free_itemList.get(position).getContent();
+            String content=free_itemList.get(position).getContents();
             if(content.length()>20){
                 content=content.substring(0,20)+"...더보기.";
             }
 
-            nickname_textView.setText(free_itemList.get(position).getNickname());
+            nickname_textView.setText(free_itemList.get(position).getAuthor().getName());
             title_textView.setText(free_itemList.get(position).getTitle());
             content_textView.setText(content);
-            date_textView.setText(free_itemList.get(position).getWrite_date());
+//            date_textView.setText(free_itemList.get(position).getWrite_date());
         }
         return convertView;
     }

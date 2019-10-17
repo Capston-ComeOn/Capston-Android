@@ -3,7 +3,6 @@ package com.example.capstonmaster.board.free_board;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,10 +12,8 @@ import androidx.appcompat.widget.Toolbar;
 
 
 import com.example.capstonmaster.RegisterActivity;
-import com.example.capstonmaster.dto.List_item;
+import com.example.capstonmaster.dto.Board;
 import com.example.capstonmaster.R;
-
-import org.w3c.dom.Text;
 
 public class FreeListDetail extends AppCompatActivity {
 
@@ -40,11 +37,11 @@ public class FreeListDetail extends AppCompatActivity {
     Button commentButton = (Button) findViewById(R.id.commentButton);
 
     Intent intent = getIntent();
-    List_item list=(List_item) intent.getSerializableExtra("detail");
+    Board list=(Board) intent.getSerializableExtra("detail");
 
-    nickname.setText(list.getNickname());
+    nickname.setText(list.getAuthor().getName());
     title.setText(list.getTitle());
-    content.setText(list.getContent());
+    content.setText(list.getContents());
 
     commentButton.setOnClickListener(new Button.OnClickListener(){
       public void onClick(View view) {

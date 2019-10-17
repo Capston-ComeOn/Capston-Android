@@ -52,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
         userToken = sf.getString("userToken", "");
         System.out.println(userToken + "토큰 있음 ㅇㅇ");
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         getBoardList();
 
         this.InitializeLayout();

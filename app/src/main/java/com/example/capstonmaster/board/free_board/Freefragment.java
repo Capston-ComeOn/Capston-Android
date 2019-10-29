@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import com.example.capstonmaster.dto.Author;
@@ -32,6 +36,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
 //https://material.io/resources/icons/?style=baseline
 public class Freefragment extends Fragment {
     ListView listView;
@@ -55,15 +60,7 @@ public class Freefragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        FloatingActionButton fab = root.findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"눌림",Toast.LENGTH_LONG).show();
-                Intent intent= new Intent(getContext(),FreeWriteActivity.class);
-                startActivity(intent);
-            }
-        });
+
 //       while (board == null) {
 //           getBoard();
 //           try {
@@ -72,42 +69,112 @@ public class Freefragment extends Fragment {
 //               e.printStackTrace();
 //           }
 //        }
-            listView = root.findViewById(R.id.free_list);
-            list_itemArrayList = new ArrayList<>();
+        listView = root.findViewById(R.id.free_list);
+        list_itemArrayList = new ArrayList<>();
 //            for (int i = 0; i < board.length; i++) {
 //                list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
 //
 //            }
-            list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("ddd", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("as", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("gggg", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("zz", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1,new Author("a","a","a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("ddd", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("as", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("gggg", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("zz", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
 
 
-            adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
-            listView.setAdapter(adapter);
+        adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
+        listView.setAdapter(adapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(root.getContext(), FreeListDetail.class);
-                    intent.putExtra("detail", list_itemArrayList.get(position));
-                    startActivity(intent);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(root.getContext(), FreeListDetail.class);
+                intent.putExtra("detail", list_itemArrayList.get(position));
+                startActivity(intent);
+            }
+        });
+
+
+        System.out.println("프래그먼트온크리뷰");
+        FloatingActionButton fab = root.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(root.getContext(), "눌림", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getContext(), FreeWriteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final SwipeRefreshLayout mSwipeRefreshLayout = root.findViewById(R.id.swipe_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int position = firstVisibleItem+visibleItemCount;
+                int limit = totalItemCount;
+
+
+                if(position>=limit && totalItemCount>0 && !mSwipeRefreshLayout.isRefreshing() ) {
+                    mSwipeRefreshLayout.setRefreshing(true);
+                    //In the below method I made my call to my ws...
+                    Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
+                    mSwipeRefreshLayout.setRefreshing(false);
                 }
-            });
-
-
+            }
+        });
         return root;
     }
-//    Value {"content":[{"id":101,"title":"제목100","contents":"내용100","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":102,"title":"제목101","contents":"내용101","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":103,"title":"제목102","contents":"내용102","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":104,"title":"제목103","contents":"내용103","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":105,"title":"제목104","contents":"내용104","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":106,"title":"제목105","contents":"내용105","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":107,"title":"제목106","contents":"내용106","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":108,"title":"제목107","contents":"내용107","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":109,"title":"제목108","contents":"내용108","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":110,"title":"제목109","contents":"내용109","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":111,"title":"제목110","contents":"내용110","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":112,"title":"제목111","contents":"내용111","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":113,"title":"제목112","contents":"내용112","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":114,"title":"제목113","contents":"내용113","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":115,"title":"제목114","contents":"내용114","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":116,"title":"제목115","contents":"내용115","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":117,"title":"제목116","contents":"내용116","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":118,"title":"제목117","contents":"내용117","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":119,"title":"제목118","contents":"내용118","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":120,"title":"제목119","contents":"내용119","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}}],"pageable":{"sort":{"sorted":false,"unsorted":true,"empty":true},"offset":0,"pageSize":20,"pageNumber":0,"paged":true,"unpaged":false},"totalPages":5,"totalElements":100,"last":false,"number":0,"size":20,"sort":{"sorted":false,"unsorted":true,"empty":true},"numberOfElements":20,"first":true,"empty":false} of type org.json.JSONObject cannot be converted to JSONArray
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        System.out.println("프래그정지");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        System.out.println("프래그디스뷰");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("프래그재개");
+        adapter.notifyDataSetChanged();
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.detach(this).attach(this).commit();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("프래그일시정지");
+
+    }
+
+    //    Value {"content":[{"id":101,"title":"제목100","contents":"내용100","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":102,"title":"제목101","contents":"내용101","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":103,"title":"제목102","contents":"내용102","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":104,"title":"제목103","contents":"내용103","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":105,"title":"제목104","contents":"내용104","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":106,"title":"제목105","contents":"내용105","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":107,"title":"제목106","contents":"내용106","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":108,"title":"제목107","contents":"내용107","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":109,"title":"제목108","contents":"내용108","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":110,"title":"제목109","contents":"내용109","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":111,"title":"제목110","contents":"내용110","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":112,"title":"제목111","contents":"내용111","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":113,"title":"제목112","contents":"내용112","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":114,"title":"제목113","contents":"내용113","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":115,"title":"제목114","contents":"내용114","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":116,"title":"제목115","contents":"내용115","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":117,"title":"제목116","contents":"내용116","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":118,"title":"제목117","contents":"내용117","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":119,"title":"제목118","contents":"내용118","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":120,"title":"제목119","contents":"내용119","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}}],"pageable":{"sort":{"sorted":false,"unsorted":true,"empty":true},"offset":0,"pageSize":20,"pageNumber":0,"paged":true,"unpaged":false},"totalPages":5,"totalElements":100,"last":false,"number":0,"size":20,"sort":{"sorted":false,"unsorted":true,"empty":true},"numberOfElements":20,"first":true,"empty":false} of type org.json.JSONObject cannot be converted to JSONArray
 //
 //[{"id":1,"name":"학과 게시판"},{"id":2,"name":"자유 게시판"},{"id":3,"name":"학부생 게시판"},{"id":4,"name":"학년별 게시판"}]
 //

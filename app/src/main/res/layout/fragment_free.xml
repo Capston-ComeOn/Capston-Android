@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe_layout">
 
     <ListView
         android:id="@+id/free_list"
@@ -18,7 +22,7 @@
         android:dividerHeight="4dp"
         android:divider="#ECEFF1"
         />
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -26,7 +30,7 @@
         android:layout_marginBottom="36dp"
         android:clickable="true"
         android:backgroundTint="#E2E1E1"
-        android:src="@drawable/ic_action_name"
+        android:src="@drawable/ic_action_write"
         app:elevation="100dp"
         app:pressedTranslationZ="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

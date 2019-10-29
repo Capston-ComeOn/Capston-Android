@@ -71,59 +71,10 @@ public class LoginActivity extends AppCompatActivity {
       }
     });
 
-//    btn_register.setOnClickListener(new Button.OnClickListener() {
-//      @Override
-//      public void onClick(View view) {
-//        System.out.println("리스트 호출");
-//        getBoardList();
-//      }
-//    });
+
   }
 
-  public void getBoardList(){
 
-    OkHttpClient client = new OkHttpClient();
-
-    final Request request = new Request.Builder()
-      .header(getString(R.string.Authorization), "Bearer "+access_token)
-      .url(getString(R.string.ip)+"/api/article")
-      .build();
-    client.newCall(request).enqueue(new Callback() {
-      @Override
-      public void onFailure(Call call, IOException e) {
-        System.out.println(e);
-        System.out.println("실패");
-      }
-
-      @Override
-      public void onResponse(Call call, Response response) throws IOException {
-        try {
-          JSONObject jsonObject = new JSONObject(response.body().string());
-          final String message = jsonObject.toString(5);
-          System.out.println(message);
-        } catch (JSONException e) {
-          e.printStackTrace();
-        }
-      }
-
-//      @Override
-//      public void onFailure(final Request request, final IOException e) {
-//        System.out.println(e);
-//        System.out.println("실패");
-//      }
-//
-//      @Override
-//      public void onResponse(Response response) throws IOException {
-//        try {
-//          JSONObject jsonObject = new JSONObject(response.body().string());
-//          final String message = jsonObject.toString(5);
-//          System.out.println(message);
-//        } catch (JSONException e) {
-//          e.printStackTrace();
-//        }
-//      }
-    });
-  }
 
   public void getAccessToken(){
     OkHttpClient client = new OkHttpClient();

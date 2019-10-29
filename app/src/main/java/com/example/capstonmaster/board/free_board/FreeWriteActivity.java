@@ -7,8 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.capstonmaster.R;
+import com.example.capstonmaster.dto.Board;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Credentials;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class FreeWriteActivity extends AppCompatActivity {
     EditText title;
@@ -26,7 +43,29 @@ public class FreeWriteActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                OkHttpClient client = new OkHttpClient();
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("grant_type", "")
+                        .add("title",title.getText().toString())
+                        .add("contents",contents.getText().toString())
+                        .build();
+                final Request request = new Request.Builder()
+                        .header(getString(R.string.Authorization), Credentials.basic("id","secret"))
+                        .url(getString(R.string.ip)+"/oauth/token")
+                        .put(requestBody)
+                        .build();
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Toast.makeText(getApplicationContext(),"글등록실패",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        finish();
+                    }
+                });
+
             }
         });
     }

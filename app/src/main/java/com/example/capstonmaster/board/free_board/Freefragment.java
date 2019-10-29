@@ -132,12 +132,19 @@ public class Freefragment extends Fragment {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int position = firstVisibleItem+visibleItemCount;
                 int limit = totalItemCount;
-
+                System.out.println(firstVisibleItem+" "+visibleItemCount+" "+totalItemCount);
 
                 if(position>=limit && totalItemCount>0 && !mSwipeRefreshLayout.isRefreshing() ) {
                     mSwipeRefreshLayout.setRefreshing(true);
-                    //In the below method I made my call to my ws...
+                    list_itemArrayList.add(new Board("추가1", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+                    list_itemArrayList.add(new Board("추가2", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+                    list_itemArrayList.add(new Board("추가3", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+                    list_itemArrayList.add(new Board("추가4", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+                    list_itemArrayList.add(new Board("추가5", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
                     Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
+                    adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
+                    listView.setAdapter(adapter);
+                    listView.setSelection(position-3);
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
             }

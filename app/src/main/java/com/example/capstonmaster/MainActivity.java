@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 //                ft.detach(sectionsPageAdapter.getItem(1)).attach(sectionsPageAdapter.getItem(1));
 //                ft.commit();
                 this.InitializeLayout();
-                viewPager.setCurrentItem(1);
+                viewPager.setCurrentItem(tabLayout.getSelectedTabPosition());
                 return true;
             case R.id.action_settings:
                 Toast.makeText(getApplicationContext(), " 설정", Toast.LENGTH_SHORT).show();
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println(e);
-                System.out.println("실패");
+                System.out.println("메인액티비티카테고리 가져오기 실패");
             }
 
             @Override

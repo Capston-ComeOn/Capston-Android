@@ -2,7 +2,9 @@ package com.example.capstonmaster.board.free_board;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,8 @@ public class FreeWriteActivity extends AppCompatActivity {
     EditText title;
     EditText contents;
     Button submit;
+    SharedPreferences sf;
+    String userToken;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,20 +43,31 @@ public class FreeWriteActivity extends AppCompatActivity {
         title= findViewById(R.id.free_title);
         contents=findViewById(R.id.free_contents);
         submit = findViewById(R.id.free_submit);
+        sf = getApplicationContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        userToken = sf.getString("userToken", "");
 
+        JSONObject jsonInput = new JSONObject();
+
+//        try {
+//            jsonInput.put("id", id);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            return;
+//        }
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OkHttpClient client = new OkHttpClient();
                 RequestBody requestBody = new FormBody.Builder()
-                        .add("grant_type", "")
-                        .add("title",title.getText().toString())
+//                        .add("grant_type", "")
+                        .add("categoryId", Freefragment.id)
                         .add("contents",contents.getText().toString())
+                        .add("title",title.getText().toString())
                         .build();
                 final Request request = new Request.Builder()
-                        .header(getString(R.string.Authorization), Credentials.basic("id","secret"))
-                        .url(getString(R.string.ip)+"/oauth/token")
-                        .put(requestBody)
+                        .header(getString(R.string.Authorization), "Bearer " + userToken)
+                        .url(getString(R.string.ip)+"/api/article")
+                        .post(requestBody)
                         .build();
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -62,6 +77,7 @@ public class FreeWriteActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
+                        System.out.println("글등록성공?");
                         finish();
                     }
                 });

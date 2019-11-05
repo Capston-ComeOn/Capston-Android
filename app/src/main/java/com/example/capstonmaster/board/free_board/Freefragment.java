@@ -45,6 +45,8 @@ public class Freefragment extends Fragment {
     SharedPreferences sf;
     String userToken;
 
+    int page;
+
     Board[] board;
     public static String id;
     public static String category;
@@ -55,39 +57,38 @@ public class Freefragment extends Fragment {
 
         sf = root.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         userToken = sf.getString("userToken", "");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-//       while (board == null) {
-//           getBoard();
-//           try {
-//               Thread.sleep(1000);
-//           } catch (InterruptedException e) {
-//               e.printStackTrace();
-//           }
-//        }
+        page =2;
+
+       while (id == null) {
+           try {
+               Thread.sleep(500);
+               System.out.println("id 무한대기중");
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+       }
+        getBoard();
+       int c=0;
+        while (board == null) {
+            try {
+                if(c==5){
+                    getBoard();
+                }
+                c++;
+                Thread.sleep(500);
+                System.out.println("board 무한대기중");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         listView = root.findViewById(R.id.free_list);
         list_itemArrayList = new ArrayList<>();
-//            for (int i = 0; i < board.length; i++) {
-//                list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
-//
-//            }
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("ddd", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("as", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("gggg", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("zz", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+            for (int i = 0; i < board.length; i++) {
+                list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+
+            }
+//        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
 
 
         adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
@@ -119,6 +120,9 @@ public class Freefragment extends Fragment {
             @Override
             public void onRefresh() {
                 Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
+                getBoard();
+                adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
+                listView.setAdapter(adapter);
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -133,17 +137,31 @@ public class Freefragment extends Fragment {
                 int position = firstVisibleItem+visibleItemCount;
                 int limit = totalItemCount;
                 System.out.println(firstVisibleItem+" "+visibleItemCount+" "+totalItemCount);
-
+//&& !mSwipeRefreshLayout.isRefreshing()
                 if(position>=limit && totalItemCount>0 && !mSwipeRefreshLayout.isRefreshing() ) {
                     mSwipeRefreshLayout.setRefreshing(true);
-                    list_itemArrayList.add(new Board("추가1", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-                    list_itemArrayList.add(new Board("추가2", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-                    list_itemArrayList.add(new Board("추가3", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-                    list_itemArrayList.add(new Board("추가4", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-                    list_itemArrayList.add(new Board("추가5", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+                    getBoardAddition();
+                    if(position/10>=page){
+                        try {
+                            Thread.sleep(1000);
+                            System.out.println("페이지대기중"+position+" "+ page);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    for (int i = 0; i < board.length; i++) {
+                        list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+                        System.out.println(board[i].getTitle()+"~~~10개 추가");
+                    }
+//                    list_itemArrayList.add(new Board("추가1", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new Board("추가2", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new Board("추가3", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new Board("추가4", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new Board("추가5", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
                     Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
                     adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
                     listView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                     listView.setSelection(position-3);
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
@@ -180,7 +198,45 @@ public class Freefragment extends Fragment {
         System.out.println("프래그일시정지");
 
     }
+    public void getBoardAddition() {
 
+        OkHttpClient client = new OkHttpClient();
+
+        final Request request = new Request.Builder()
+                .header(getString(R.string.Authorization), "Bearer " + userToken)
+                .url(getString(R.string.ip) + "/api/article/" + id+"?size=10&page="+page)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e);
+                System.out.println("페이지추가실패");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    JSONObject jsonobject = new JSONObject(response.body().string());
+                    String m = jsonobject.optString("content");
+                    System.out.println(m+" 뭐라도찍어봐");
+                    Gson gson = new Gson();
+                    board = gson.fromJson(m, Board[].class);
+//                    for (int i = 0; i < board.length; i++) {
+//                        list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+//                        System.out.println(board[i].getTitle()+"~~~10개 추가");
+//                    }
+                    System.out.println("page="+page);
+                    page+=1;
+
+//                    System.out.println(board[0].getId() + " " + board[0].getTitle() + " " + board[0].getContents() + " " + board[0].getAuthor().getName());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        });
+    }
     //    Value {"content":[{"id":101,"title":"제목100","contents":"내용100","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":102,"title":"제목101","contents":"내용101","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":103,"title":"제목102","contents":"내용102","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":104,"title":"제목103","contents":"내용103","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":105,"title":"제목104","contents":"내용104","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":106,"title":"제목105","contents":"내용105","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":107,"title":"제목106","contents":"내용106","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":108,"title":"제목107","contents":"내용107","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":109,"title":"제목108","contents":"내용108","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":110,"title":"제목109","contents":"내용109","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":111,"title":"제목110","contents":"내용110","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":112,"title":"제목111","contents":"내용111","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":113,"title":"제목112","contents":"내용112","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":114,"title":"제목113","contents":"내용113","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":115,"title":"제목114","contents":"내용114","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":116,"title":"제목115","contents":"내용115","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":117,"title":"제목116","contents":"내용116","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":118,"title":"제목117","contents":"내용117","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":119,"title":"제목118","contents":"내용118","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}},{"id":120,"title":"제목119","contents":"내용119","author":{"name":"donggyu","email":"user@email.com"},"category":{"id":2,"name":"자유 게시판"}}],"pageable":{"sort":{"sorted":false,"unsorted":true,"empty":true},"offset":0,"pageSize":20,"pageNumber":0,"paged":true,"unpaged":false},"totalPages":5,"totalElements":100,"last":false,"number":0,"size":20,"sort":{"sorted":false,"unsorted":true,"empty":true},"numberOfElements":20,"first":true,"empty":false} of type org.json.JSONObject cannot be converted to JSONArray
 //
 //[{"id":1,"name":"학과 게시판"},{"id":2,"name":"자유 게시판"},{"id":3,"name":"학부생 게시판"},{"id":4,"name":"학년별 게시판"}]
@@ -191,7 +247,9 @@ public class Freefragment extends Fragment {
 ///api/article/category?size=10&page=0
     public void getBoard() {
 
+
         System.out.println(id + "카테고리 아이디값~~~~~~~~~~~~~~~~~~~~~");
+
         OkHttpClient client = new OkHttpClient();
 
         final Request request = new Request.Builder()
@@ -202,7 +260,7 @@ public class Freefragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println(e);
-                System.out.println("실패");
+                System.out.println("getBoard실패");
             }
 
             @Override
@@ -221,7 +279,7 @@ public class Freefragment extends Fragment {
 //                    System.out.println(m+" 뭐라도찍어봐");
                     Gson gson = new Gson();
                     board = gson.fromJson(m, Board[].class);
-//                    System.out.println(board[0].getId() + " " + board[0].getTitle() + " " + board[0].getContents() + " " + board[0].getAuthor().getName());
+                    System.out.println(board[0].getId() + " " + board[0].getTitle() + " " + board[0].getContents() + " " + board[0].getAuthor().getName());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

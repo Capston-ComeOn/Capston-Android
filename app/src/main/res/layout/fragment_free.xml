@@ -28,15 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
+        android:backgroundTint="#038ECC"
         android:clickable="true"
-        android:backgroundTint="#E2E1E1"
-        android:src="@drawable/ic_action_write"
+        android:src="@android:drawable/ic_menu_edit"
         app:elevation="100dp"
-        app:pressedTranslationZ="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:pressedTranslationZ="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

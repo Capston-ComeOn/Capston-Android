@@ -1,5 +1,6 @@
 package com.example.capstonmaster;
 
+import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
@@ -66,8 +68,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_search:
-                Toast.makeText(getApplicationContext(), " 찾기", Toast.LENGTH_SHORT).show();
+            case R.id.action_refresh:
+                Toast.makeText(getApplicationContext(), "새로고침", Toast.LENGTH_SHORT).show();
+//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.detach(sectionsPageAdapter.getItem(1)).attach(sectionsPageAdapter.getItem(1));
+//                ft.commit();
+                this.InitializeLayout();
+                viewPager.setCurrentItem(tabLayout.getSelectedTabPosition());
                 return true;
             case R.id.action_settings:
                 Toast.makeText(getApplicationContext(), " 설정", Toast.LENGTH_SHORT).show();
@@ -206,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println(e);
-                System.out.println("실패");
+                System.out.println("메인액티비티카테고리 가져오기 실패");
             }
 
             @Override

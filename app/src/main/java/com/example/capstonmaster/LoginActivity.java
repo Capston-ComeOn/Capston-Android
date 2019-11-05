@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 //        startActivity(intent);
 
         try {
-          Thread.sleep(3000);
+          Thread.sleep(2000);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         }
       }
     });
+
     btn_register.setOnClickListener(new Button.OnClickListener(){
       public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
@@ -70,59 +71,10 @@ public class LoginActivity extends AppCompatActivity {
       }
     });
 
-//    btn_register.setOnClickListener(new Button.OnClickListener() {
-//      @Override
-//      public void onClick(View view) {
-//        System.out.println("리스트 호출");
-//        getBoardList();
-//      }
-//    });
+
   }
 
-  public void getBoardList(){
 
-    OkHttpClient client = new OkHttpClient();
-
-    final Request request = new Request.Builder()
-      .header(getString(R.string.Authorization), "Bearer "+access_token)
-      .url(getString(R.string.ip)+"/api/article")
-      .build();
-    client.newCall(request).enqueue(new Callback() {
-      @Override
-      public void onFailure(Call call, IOException e) {
-        System.out.println(e);
-        System.out.println("실패");
-      }
-
-      @Override
-      public void onResponse(Call call, Response response) throws IOException {
-        try {
-          JSONObject jsonObject = new JSONObject(response.body().string());
-          final String message = jsonObject.toString(5);
-          System.out.println(message);
-        } catch (JSONException e) {
-          e.printStackTrace();
-        }
-      }
-
-//      @Override
-//      public void onFailure(final Request request, final IOException e) {
-//        System.out.println(e);
-//        System.out.println("실패");
-//      }
-//
-//      @Override
-//      public void onResponse(Response response) throws IOException {
-//        try {
-//          JSONObject jsonObject = new JSONObject(response.body().string());
-//          final String message = jsonObject.toString(5);
-//          System.out.println(message);
-//        } catch (JSONException e) {
-//          e.printStackTrace();
-//        }
-//      }
-    });
-  }
 
   public void getAccessToken(){
     OkHttpClient client = new OkHttpClient();
@@ -140,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
       @Override
       public void onFailure(Call call, IOException e) {
         System.out.println(e);
-        System.out.println("실패");
+        System.out.println("getacesstoken실패");
       }
 
       @Override
@@ -157,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
           System.out.println("성공");
           System.out.println(access_token);
         } catch (JSONException e) {
+          System.out.println("토큰가져오기응답에서오류");
           e.printStackTrace();
         }
       }

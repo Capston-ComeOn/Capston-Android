@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 
 
 import com.example.capstonmaster.RegisterActivity;
-import com.example.capstonmaster.dto.Board;
+import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.R;
 
 public class FreeListDetail extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class FreeListDetail extends AppCompatActivity {
     Button commentButton = (Button) findViewById(R.id.commentButton);
 
     Intent intent = getIntent();
-    Board list=(Board) intent.getSerializableExtra("detail");
+    ArticleVO list=(ArticleVO) intent.getSerializableExtra("detail");
 
     nickname.setText(list.getAuthor().getName());
     title.setText(list.getTitle());

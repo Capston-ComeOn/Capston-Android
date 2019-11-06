@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -15,12 +14,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
-import com.example.capstonmaster.dto.Author;
-import com.example.capstonmaster.dto.Board;
+import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -41,13 +38,13 @@ import okhttp3.Response;
 public class Freefragment extends Fragment {
     ListView listView;
     FreeListViewAdapter adapter;
-    ArrayList<Board> list_itemArrayList;
+    ArrayList<ArticleVO> list_itemArrayList;
     SharedPreferences sf;
     String userToken;
 
     int page;
 
-    Board[] board;
+    ArticleVO[] board;
     public static String id;
     public static String category;
 
@@ -85,10 +82,10 @@ public class Freefragment extends Fragment {
         listView = root.findViewById(R.id.free_list);
         list_itemArrayList = new ArrayList<>();
             for (int i = 0; i < board.length; i++) {
-                list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+                list_itemArrayList.add(new ArticleVO(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
 
             }
-//        list_itemArrayList.add(new Board("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//        list_itemArrayList.add(new ArticleVO("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
 
 
         adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
@@ -150,14 +147,14 @@ public class Freefragment extends Fragment {
                         }
                     }
                     for (int i = 0; i < board.length; i++) {
-                        list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+                        list_itemArrayList.add(new ArticleVO(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
                         System.out.println(board[i].getTitle()+"~~~10개 추가");
                     }
-//                    list_itemArrayList.add(new Board("추가1", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-//                    list_itemArrayList.add(new Board("추가2", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-//                    list_itemArrayList.add(new Board("추가3", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-//                    list_itemArrayList.add(new Board("추가4", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
-//                    list_itemArrayList.add(new Board("추가5", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new ArticleVO("추가1", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new ArticleVO("추가2", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new ArticleVO("추가3", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new ArticleVO("추가4", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
+//                    list_itemArrayList.add(new ArticleVO("추가5", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
                     Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
                     adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
                     listView.setAdapter(adapter);
@@ -220,9 +217,9 @@ public class Freefragment extends Fragment {
                     String m = jsonobject.optString("content");
                     System.out.println(m+" 뭐라도찍어봐");
                     Gson gson = new Gson();
-                    board = gson.fromJson(m, Board[].class);
+                    board = gson.fromJson(m, ArticleVO[].class);
 //                    for (int i = 0; i < board.length; i++) {
-//                        list_itemArrayList.add(new Board(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+//                        list_itemArrayList.add(new ArticleVO(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
 //                        System.out.println(board[i].getTitle()+"~~~10개 추가");
 //                    }
                     System.out.println("page="+page);
@@ -278,7 +275,7 @@ public class Freefragment extends Fragment {
                     String m = jsonobject.optString("content");
 //                    System.out.println(m+" 뭐라도찍어봐");
                     Gson gson = new Gson();
-                    board = gson.fromJson(m, Board[].class);
+                    board = gson.fromJson(m, ArticleVO[].class);
                     System.out.println(board[0].getId() + " " + board[0].getTitle() + " " + board[0].getContents() + " " + board[0].getAuthor().getName());
                 } catch (JSONException e) {
                     e.printStackTrace();

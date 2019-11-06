@@ -6,28 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".board.free_board.FreeWriteActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/w_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#14A085"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.NoActionBar" />
+
     <EditText
         android:id="@+id/free_title"
         android:layout_width="332dp"
         android:layout_height="57dp"
         android:ems="10"
+        android:hint="제목"
         android:inputType="textPersonName"
-        android:text="제목"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintVertical_bias="0.164" />
 
     <EditText
         android:id="@+id/free_contents"
         android:layout_width="334dp"
         android:layout_height="286dp"
         android:layout_marginBottom="140dp"
-        android:ems="10"
+        android:ems="3"
         android:inputType="textPersonName"
-        android:text="여기를 눌러서 글을 작성할 수 있습니다."
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:hint="여기를 눌러서 글을 작성할 수 있습니다.\n
+욕설, 비하, 음란물 게시등 커뮤니티 \n이용규칙에
+어긋나는 행위를 하지 않아 \n 다 같이 깨끗한 컴온 만들어가요~"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.376"
@@ -35,15 +49,15 @@
         app:layout_constraintTop_toBottomOf="@+id/free_title"
         app:layout_constraintVertical_bias="0.229" />
 
-    <Button
-        android:id="@+id/free_submit"
-        android:layout_width="90dp"
-        android:layout_height="42dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/free_contents"
-        app:layout_constraintVertical_bias="0.318" />
+<!--    <Button-->
+<!--        android:id="@+id/free_submit"-->
+<!--        android:layout_width="90dp"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:text="Button"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/free_contents"-->
+<!--        app:layout_constraintVertical_bias="0.318" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

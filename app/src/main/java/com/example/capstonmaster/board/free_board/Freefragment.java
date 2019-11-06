@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -83,7 +84,6 @@ public class Freefragment extends Fragment {
         list_itemArrayList = new ArrayList<>();
             for (int i = 0; i < board.length; i++) {
                 list_itemArrayList.add(new ArticleVO(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
-
             }
 //        list_itemArrayList.add(new ArticleVO("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
 
@@ -96,6 +96,7 @@ public class Freefragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(root.getContext(), FreeListDetail.class);
                 intent.putExtra("detail", list_itemArrayList.get(position));
+                intent.putExtra("position",position);
                 startActivity(intent);
             }
         });
@@ -118,8 +119,18 @@ public class Freefragment extends Fragment {
             public void onRefresh() {
                 Toast.makeText(root.getContext(), "새로고침", Toast.LENGTH_LONG).show();
                 getBoard();
+//                try {
+//                    Thread.sleep(500);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+                list_itemArrayList.clear();
+                for (int i = 0; i < board.length; i++) {
+                    list_itemArrayList.add(new ArticleVO(board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+                }
                 adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
                 listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });

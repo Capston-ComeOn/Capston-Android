@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".board.free_board.FreeWriteActivity"></activity>
+        <activity android:name=".board.free_board.FreeWriteActivity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
         <activity
             android:name=".board.free_board.FreeListDetail"
             android:label="@string/title_activity_free_list_detail"

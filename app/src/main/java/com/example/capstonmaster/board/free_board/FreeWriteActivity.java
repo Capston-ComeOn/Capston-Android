@@ -1,10 +1,15 @@
 package com.example.capstonmaster.board.free_board;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +36,6 @@ import okhttp3.Response;
 public class FreeWriteActivity extends AppCompatActivity {
     EditText title;
     EditText contents;
-    Button submit;
     SharedPreferences sf;
     String userToken;
 
@@ -39,27 +43,39 @@ public class FreeWriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_write);
+        Toolbar toolbar = findViewById(R.id.w_toolbar);
+        toolbar.setTitle("글 쓰기");
+        toolbar.setBackgroundColor(Color.parseColor("#ffffff"));
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(android.R.drawable.ic_delete);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         title = findViewById(R.id.free_title);
         contents = findViewById(R.id.free_contents);
-        submit = findViewById(R.id.free_submit);
         sf = getApplicationContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         userToken = sf.getString("userToken", "");
 
-//        JSONObject jsonInput = new JSONObject();
 
-//        try {
-//            jsonInput.put("id", id);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//            return;
-//        }
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.appbar_write, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_write:
                 OkHttpClient client = new OkHttpClient();
                 Gson gson = new Gson();
-                String json = gson.toJson(new ArticleVO(title.getText().toString(),contents.getText().toString(),2));
+                String json = gson.toJson(new ArticleVO(title.getText().toString(), contents.getText().toString(), 2));
 //                RequestBody requestBody = new FormBody.Builder()
 ////                        .add("grant_type", "")
 //                        .add("categoryId", Freefragment.id)
@@ -84,12 +100,13 @@ public class FreeWriteActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        System.out.println("글등록성공?"+response.body().toString());
+                        System.out.println("글등록성공?" + response.body().toString());
                         finish();
                     }
                 });
-
-            }
-        });
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

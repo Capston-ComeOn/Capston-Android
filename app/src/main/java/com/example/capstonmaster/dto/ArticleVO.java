@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ArticleVO implements Serializable {
+    private long id;
     private String title;
     private String contents;
     private long categoryId;
@@ -13,11 +14,19 @@ public class ArticleVO implements Serializable {
         this.contents = contents;
         this.categoryId = categoryId;
     }
-    public ArticleVO(String title, String contents, long categoryId, Author author) {
+    public ArticleVO(long id,String title, String contents, long categoryId, Author author) {
         this.title = title;
         this.contents = contents;
         this.categoryId = categoryId;
         this.author = author;
+    }
+
+    public long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {

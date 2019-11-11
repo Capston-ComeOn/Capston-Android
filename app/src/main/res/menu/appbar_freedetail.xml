@@ -10,5 +10,5 @@
         android:id="@+id/action_delete"
         android:icon="@android:drawable/ic_menu_delete"
         android:title="삭 제"
-        app:showAsAction="withText" />
+        app:showAsAction="always|never" />
 </menu>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -100,7 +101,8 @@ public class FreeWriteActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        System.out.println("글등록성공?" + response.body().toString());
+                        System.out.println("글등록성공?" + response.body()+response.message());
+                        setResult(RESULT_OK);
                         finish();
                     }
                 });

@@ -35,7 +35,7 @@ import okhttp3.Response;
 public class FreeListDetail extends AppCompatActivity {
     SharedPreferences sf;
     String userToken;
-    int id;
+    long articleId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +61,9 @@ public class FreeListDetail extends AppCompatActivity {
         Button commentButton = (Button) findViewById(R.id.commentButton);
 
         Intent intent = getIntent();
-        id=intent.getIntExtra("position",0)+101;
+//        id=intent.getIntExtra("position",0)+101;
         ArticleVO list = (ArticleVO) intent.getSerializableExtra("detail");
-
+        articleId= list.getId();
         nickname.setText(list.getAuthor().getName());
         title.setText(list.getTitle());
         content.setText(list.getContents());
@@ -115,7 +115,7 @@ public class FreeListDetail extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
         final Request request = new Request.Builder()
                 .header(getString(R.string.Authorization), "Bearer " +userToken )
-                .url(getString(R.string.ip) + "/api/article/"+id)
+                .url(getString(R.string.ip) + "/api/article/"+articleId)
                 .delete()
                 .build();
         client.newCall(request).enqueue(new Callback() {
@@ -127,6 +127,8 @@ public class FreeListDetail extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 System.out.println("글삭제성공?" + response.body().toString());
+//                Intent intent=new Intent(getApplicationContext(),Freefragment.class);
+                setResult(RESULT_OK);
                 finish();
             }
         });

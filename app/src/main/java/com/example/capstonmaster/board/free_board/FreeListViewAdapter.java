@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.capstonmaster.dto.Board;
+import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.R;
 
 import java.util.ArrayList;
 
 public class FreeListViewAdapter extends BaseAdapter {
     Context context;
-    ArrayList<Board> free_itemList;
+    ArrayList<ArticleVO> free_itemList;
     TextView nickname_textView;
     TextView title_textView;
     TextView date_textView;
     TextView content_textView;
-    public FreeListViewAdapter(Context context, ArrayList<Board> free_itemList) {
+    public FreeListViewAdapter(Context context, ArrayList<ArticleVO> free_itemList) {
         this.context = context;
         this.free_itemList = free_itemList;
     }

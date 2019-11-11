@@ -7,19 +7,19 @@
 //import android.widget.BaseAdapter;
 //import android.widget.TextView;
 //
-//import com.example.capstonmaster.dto.Board;
+//import com.example.capstonmaster.dto.ArticleVO;
 //import com.example.capstonmaster.R;
 //
 //import java.util.ArrayList;
 //
 //public class FLDetailCommentAdapter extends BaseAdapter {
 //  Context context;
-//  ArrayList<Board> Comment_List;
+//  ArrayList<ArticleVO> Comment_List;
 //  TextView nickname_content;
 //  TextView title_textView;
 //  TextView date_content;
 //  TextView content_content;
-//  public FLDetailCommentAdapter(Context context, ArrayList<Board> free_itemList) {
+//  public FLDetailCommentAdapter(Context context, ArrayList<ArticleVO> free_itemList) {
 //    this.context = context;
 //    this.comment_List = free_itemList;
 //  }

@@ -1,6 +1,7 @@
 package com.example.capstonmaster;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,12 +37,12 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
-    ViewPager viewPager;
-    TabLayout tabLayout;
+    public ViewPager viewPager;
+    public TabLayout tabLayout;
     private SectionsPageAdapter sectionsPageAdapter;
     SharedPreferences sf;
     String userToken;
-
+    private int REQUEST_TEST = 1;
 
     TabLayout.TabLayoutOnPageChangeListener tabLayoutOnPageChangeListener;
     TabLayout.OnTabSelectedListener onTabSelectedListener;
@@ -181,6 +182,28 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("메인일시정지");    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("메인재개");    }
+
+    @Override
+    protected void onRestart() {
+        System.out.println("메인재시작");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStop() {
+        System.out.println("메인스탑");
+        super.onStop();
     }
 
     @Override

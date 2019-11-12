@@ -1,13 +1,12 @@
 package com.example.capstonmaster;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,13 +18,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.capstonmaster.board.free_board.Freefragment;
 import com.example.capstonmaster.dto.Author;
-import com.example.capstonmaster.metoring.MentoFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -53,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
     private int REQUEST_TEST = 1;
     TextView h_email;
     TextView h_nickname;
-    ImageButton imageButton;
+    ImageButton imagebutton;
     String id;
     String[] category;
     FragmentManager fragmentManager;
+    View headerView;
+    NavigationView navigationView;
 
     TabLayout.TabLayoutOnPageChangeListener tabLayoutOnPageChangeListener;
     TabLayout.OnTabSelectedListener onTabSelectedListener;
@@ -73,6 +72,17 @@ public class MainActivity extends AppCompatActivity {
         getBoardList();
         this.InitializeLayout();
         getAccount();
+
+        navigationView = findViewById(R.id.nav_view);
+        headerView = navigationView.getHeaderView(0);
+        ImageButton imagebutton = headerView.findViewById(R.id.imageButton);
+        imagebutton.setOnClickListener(new Button.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), Mypage.class);
+            startActivity(intent);
+          }
+        });
     }
 
     @Override
@@ -150,9 +160,9 @@ public class MainActivity extends AppCompatActivity {
 //    getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
 
         DrawerLayout drawLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        View headerView = navigationView.getHeaderView(0);
+        headerView = navigationView.getHeaderView(0);
         h_email = headerView.findViewById(R.id.h_email);
         h_nickname = headerView.findViewById(R.id.h_nickname);
 

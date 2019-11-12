@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,13 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.capstonmaster.board.free_board.Freefragment;
+import com.example.capstonmaster.dto.Author;
+import com.example.capstonmaster.metoring.MentoFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,9 +46,15 @@ public class MainActivity extends AppCompatActivity {
     public ViewPager viewPager;
     public TabLayout tabLayout;
     private SectionsPageAdapter sectionsPageAdapter;
+    private MentoPageAdapter mentoPageAdapter;
     SharedPreferences sf;
     String userToken;
     private int REQUEST_TEST = 1;
+    TextView h_email;
+    TextView h_nickname;
+    String id;
+    String[] category;
+    FragmentManager fragmentManager;
 
     TabLayout.TabLayoutOnPageChangeListener tabLayoutOnPageChangeListener;
     TabLayout.OnTabSelectedListener onTabSelectedListener;
@@ -55,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
         userToken = sf.getString("userToken", "");
         System.out.println(userToken + "토큰 있음 ㅇㅇ");
 
-        getBoardList();
 
+        getBoardList();
         this.InitializeLayout();
+        getAccount();
     }
 
     @Override
@@ -90,13 +103,25 @@ public class MainActivity extends AppCompatActivity {
         //toolBar를 통해 App Bar 생성
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.parseColor("#B0BEC5"));
+//        toolbar.setTitleTextColor(Color.parseColor("#B0BEC5"));
 //    toolbar.setBackgroundColor(Color.parseColor("#ffffff"));
 
-        sectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+        fragmentManager=getSupportFragmentManager();
+        sectionsPageAdapter = new SectionsPageAdapter(fragmentManager);
+        mentoPageAdapter=new MentoPageAdapter(fragmentManager);
         viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(sectionsPageAdapter);
         tabLayout = findViewById(R.id.tabs);
+        if(category==null){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        for (int i = 0; i < category.length; i++) {
+            tabLayout.addTab(tabLayout.newTab().setText(category[i]));
+        }
 //    tabLayout.setupWithViewPager(viewPager);
 
 //        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
@@ -125,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+        View headerView = navigationView.getHeaderView(0);
+        h_email = headerView.findViewById(R.id.h_email);
+        h_nickname = headerView.findViewById(R.id.h_nickname);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -157,23 +185,29 @@ public class MainActivity extends AppCompatActivity {
 //        Toast.makeText(MainActivity.this,destination.getLabel(),Toast.LENGTH_LONG).show();
 //      }
 //    });
-
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.free:
                         Toast.makeText(getApplicationContext(), "자유", Toast.LENGTH_SHORT).show();
-                        viewPager.setCurrentItem(1);
+                        tabLayout.setVisibility(View.VISIBLE);
+                        viewPager.setAdapter(sectionsPageAdapter);
+                        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                        viewPager.setCurrentItem(0);
                         break;
-                    case R.id.notice:
-                        Toast.makeText(getApplicationContext(), "공지", Toast.LENGTH_SHORT).show();
-                        viewPager.setCurrentItem(2);
-                        break;
+//                    case R.id.notice:
+//                        Toast.makeText(getApplicationContext(), "공지", Toast.LENGTH_SHORT).show();
+//                        viewPager.setCurrentItem(2);
+//                        break;
                     case R.id.mento_menti:
                         Toast.makeText(getApplicationContext(), "멘토", Toast.LENGTH_SHORT).show();
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.viewpager,new Loginfragment()).commit();
+//                        fragmentManager.beginTransaction().replace(R.id.viewpager,new MentoFragment()).commit();
+                        viewPager.clearOnPageChangeListeners();
+                        viewPager.setAdapter(mentoPageAdapter);
+                        tabLayout.setVisibility(View.GONE);
+//                        viewPager.setOffscreenPageLimit(0);
+//                        viewPager.removeOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
                         break;
                 }
 //                getSupportActionBar().setTitle();
@@ -243,10 +277,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     JSONArray jsonArray = new JSONArray(response.body().string());
+                    category=new String[jsonArray.length()];
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonobject = jsonArray.getJSONObject(i);
-                        String id   = jsonobject.getString("id");
-                        String category = jsonobject.getString("name");
+                         id   = jsonobject.getString("id");
+                        category[i] = jsonobject.getString("name");
                         switch (id){
                             case "1":
                                 break;
@@ -266,6 +301,33 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
+        });
+    }
+    public void getAccount() {
+        //System.out.println("=======" + access_token);
+        OkHttpClient client = new OkHttpClient();
+        final Request request = new Request.Builder()
+                .header(getString(R.string.Authorization), "Bearer " + userToken)
+                .url(getString(R.string.ip) + "/api/accounts/login")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e);
+                System.out.println("getAccount 실패");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    Gson gson = new Gson();
+                    Author account = gson.fromJson(response.body().string(), Author.class);
+                    h_email.setText(account.getEmail());
+                    h_nickname.setText(account.getName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 }

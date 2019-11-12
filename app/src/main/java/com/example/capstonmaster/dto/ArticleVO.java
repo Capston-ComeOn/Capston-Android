@@ -9,12 +9,13 @@ public class ArticleVO implements Serializable {
     private String contents;
     private long categoryId;
     private Author author;
-    public ArticleVO(String title, String contents, long categoryId){
+    public ArticleVO(String title, String contents){
         this.title = title;
         this.contents = contents;
         this.categoryId = categoryId;
     }
     public ArticleVO(long id,String title, String contents, long categoryId, Author author) {
+        this.id =id;
         this.title = title;
         this.contents = contents;
         this.categoryId = categoryId;
@@ -25,7 +26,7 @@ public class ArticleVO implements Serializable {
         return categoryId;
     }
 
-    public void setCategoryId(long categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -46,10 +47,10 @@ public class ArticleVO implements Serializable {
     }
 
     public long getId() {
-        return categoryId;
+        return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.categoryId = id;
     }
 

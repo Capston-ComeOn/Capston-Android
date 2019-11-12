@@ -4,45 +4,34 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/free"
-            android:title="자유 게시판" />
-        <item android:title="학부생 게시판">
-            <menu>
-                <item
-                    android:id="@+id/notice"
-                    android:title="공지사항" />
-                <item
-                    android:id="@+id/mento_menti"
-                    android:title="멘토/멘티게시판" />
-                <item
-                    android:id="@+id/club_intro"
-                    android:title="학과동아리소개" />
-                <item
-                    android:id="@+id/advice"
-                    android:title="선배의조언" />
-            </menu>
-        </item>
-        <item android:title="추천강좌소개 게시판">
-            <menu>
-                <item
-                    android:id="@+id/first"
-                    android:title="1학년" />
-                <item
-                    android:id="@+id/second"
-                    android:title="2학년" />
-                <item
-                    android:id="@+id/third"
-                    android:title="3학년" />
-                <item
-                    android:id="@+id/fourth"
-                    android:title="4학년" />
-            </menu>
-        </item>
+            android:title="학과연혁"
+            android:id="@+id/story"
+            />
         <item
-            android:id="@+id/pro_intro"
-            android:title="교수님소개 게시판" />
-      <item
-        android:id="@+id/Em_infor"
-        android:title="취업정보 게시판" />
+            android:id="@+id/free"
+            android:title="게시판" />
+<!--        <item-->
+<!--            android:title="학부생 게시판">-->
+<!--            <menu>-->
+<!--                <item-->
+<!--                    android:id="@+id/mento_menti"-->
+<!--                    android:title="멘토/멘티" />-->
+<!--                <item-->
+<!--                    android:id="@+id/project"-->
+<!--                    android:title="프로젝트/공모전" />-->
+<!--                <item-->
+<!--                    android:id="@+id/used_item"-->
+<!--                    android:title="중고 거래" />-->
+<!--                <item-->
+<!--                    android:id="@+id/advice"-->
+<!--                    android:title="선배의 조언" />-->
+<!--            </menu>-->
+<!--        </item>-->
+        <item
+            android:id="@+id/mento_menti"
+            android:title="멘토링" />
+        <item
+            android:id="@+id/logout"
+            android:title="로그아웃" />
     </group>
 </menu>

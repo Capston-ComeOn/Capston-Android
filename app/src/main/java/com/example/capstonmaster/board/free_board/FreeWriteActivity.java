@@ -39,6 +39,8 @@ public class FreeWriteActivity extends AppCompatActivity {
     EditText contents;
     SharedPreferences sf;
     String userToken;
+    Intent intent;
+    int articleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,13 @@ public class FreeWriteActivity extends AppCompatActivity {
         sf = getApplicationContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         userToken = sf.getString("userToken", "");
 
+        intent = getIntent();
+        if (intent != null) {
+            title.setText(intent.getStringExtra("title"));
+            contents.setText(intent.getStringExtra("contents"));
+            articleId = intent.getIntExtra("articleId", 0);
+        }
+
 
     }
 
@@ -76,36 +85,47 @@ public class FreeWriteActivity extends AppCompatActivity {
             case R.id.action_write:
                 OkHttpClient client = new OkHttpClient();
                 Gson gson = new Gson();
-                String json = gson.toJson(new ArticleVO(title.getText().toString(), contents.getText().toString(), 2));
-//                RequestBody requestBody = new FormBody.Builder()
-////                        .add("grant_type", "")
-//                        .add("categoryId", Freefragment.id)
-//                        .add("contents",contents.getText().toString())
-//                        .add("title",title.getText().toString())
-//                        .build();
-//                final Request request = new Request.Builder()
-////                        .header(getString(R.string.Authorization), "Bearer " + userToken)
-////                        .url(getString(R.string.ip)+"/api/article")
-////                        .post(requestBody)
-////                        .build();
-                final Request request = new Request.Builder()
-                        .header(getString(R.string.Authorization), "Bearer " + userToken)
-                        .url(getString(R.string.ip) + "/api/article")
-                        .post(RequestBody.create(MediaType.parse("application/json"), json))
-                        .build();
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Toast.makeText(getApplicationContext(), "글등록실패", Toast.LENGTH_LONG).show();
-                    }
+                String json = gson.toJson(new ArticleVO(title.getText().toString(), contents.getText().toString()));
+                if (intent == null) {
+                    final Request request = new Request.Builder()
+                            .header(getString(R.string.Authorization), "Bearer " + userToken)
+                            .url(getString(R.string.ip) + "/api/article/" + 2)
+                            .post(RequestBody.create(MediaType.parse("application/json"), json))
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Toast.makeText(getApplicationContext(), "글등록실패", Toast.LENGTH_LONG).show();
+                        }
 
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        System.out.println("글등록성공?" + response.body()+response.message());
-                        setResult(RESULT_OK);
-                        finish();
-                    }
-                });
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            System.out.println("글등록성공?" + response.body() + response.message());
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    });
+                } else {
+                    final Request request = new Request.Builder()
+                            .header(getString(R.string.Authorization), "Bearer " + userToken)
+                            .url(getString(R.string.ip) + "/api/article/" + articleId)
+                            .put(RequestBody.create(MediaType.parse("application/json"), json))
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Toast.makeText(getApplicationContext(), "글수정실패", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            System.out.println("글수정성공?" + response.body() + response.message());
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    });
+
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

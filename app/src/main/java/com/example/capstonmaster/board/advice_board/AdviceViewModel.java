@@ -1,13 +1,13 @@
-package com.example.capstonmaster.board.notice_board;
+package com.example.capstonmaster.board.advice_board;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NoticeViewModel extends ViewModel {
+public class AdviceViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public NoticeViewModel(){
+    public AdviceViewModel(){
         mText = new MutableLiveData<>();
         mText.setValue("공지사항");
     }

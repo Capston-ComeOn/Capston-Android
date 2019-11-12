@@ -7,9 +7,9 @@
 
 <!--    <fragment-->
 <!--        android:id="@+id/login"-->
-<!--        android:name="com.example.capstonmaster.board.login.Loginfragment"-->
+<!--        android:name="com.example.capstonmaster.board.login.Departmentfragment"-->
 <!--        android:label="컴 온"-->
-<!--        tools:layout="@layout/frament_login" />-->
+<!--        tools:layout="@layout/frament_department" />-->
 <!--    <fragment-->
 <!--        android:id="@+id/free"-->
 <!--        android:name="com.example.capstonmaster.board.free_board.Freefragment"-->
@@ -18,8 +18,8 @@
 
 <!--    <fragment-->
 <!--        android:id="@+id/notice"-->
-<!--        android:name="com.example.capstonmaster.board.notice_board.Noticefragment"-->
+<!--        android:name="com.example.capstonmaster.board.notice_board.Advicefragment"-->
 <!--        android:label="공지사항"-->
-<!--        tools:layout="@layout/fragment_notice" />-->
+<!--        tools:layout="@layout/fragment_advice" />-->
 
 </navigation>

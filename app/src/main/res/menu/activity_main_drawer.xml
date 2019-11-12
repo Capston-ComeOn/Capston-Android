@@ -3,32 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-      <item
-            android:title="학과 게시판"
-            android:id="@+id/department"
-        />
+        <item
+            android:title="학과연혁"
+            android:id="@+id/story"
+            />
         <item
             android:id="@+id/free"
-            android:title="자유 게시판" />
+            android:title="게시판" />
+<!--        <item-->
+<!--            android:title="학부생 게시판">-->
+<!--            <menu>-->
+<!--                <item-->
+<!--                    android:id="@+id/mento_menti"-->
+<!--                    android:title="멘토/멘티" />-->
+<!--                <item-->
+<!--                    android:id="@+id/project"-->
+<!--                    android:title="프로젝트/공모전" />-->
+<!--                <item-->
+<!--                    android:id="@+id/used_item"-->
+<!--                    android:title="중고 거래" />-->
+<!--                <item-->
+<!--                    android:id="@+id/advice"-->
+<!--                    android:title="선배의 조언" />-->
+<!--            </menu>-->
+<!--        </item>-->
         <item
-            android:title="학부생 게시판">
-            <menu>
-                <item
-                  android:id="@+id/mento_menti"
-                  android:title="멘토/멘티" />
-                <item
-                  android:id="@+id/project"
-                  android:title="프로젝트/공모전" />
-                <item
-                  android:id="@+id/used_item"
-                  android:title="중고 거래" />
-                <item
-                  android:id="@+id/advice"
-                  android:title="선배의 조언" />
-            </menu>
-        </item>
+            android:id="@+id/mento_menti"
+            android:title="멘토링" />
         <item
-            android:id="@+id/advertising"
-            android:title="홍보 게시판" />
+            android:id="@+id/logout"
+            android:title="로그아웃" />
     </group>
 </menu>

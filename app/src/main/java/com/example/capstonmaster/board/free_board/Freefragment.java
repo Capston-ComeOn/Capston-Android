@@ -97,7 +97,7 @@ public class Freefragment extends Fragment {
         listView = root.findViewById(R.id.free_list);
         list_itemArrayList = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
-            list_itemArrayList.add(new ArticleVO(board[i].getId(), board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+            list_itemArrayList.add(new ArticleVO(board[i].getId(), board[i].getTitle(), board[i].getContents(), board[i].getCategoryId(), board[i].getAuthor()));
         }
 //        list_itemArrayList.add(new ArticleVO("안녕", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));
 
@@ -140,7 +140,7 @@ public class Freefragment extends Fragment {
 //                }
                 list_itemArrayList.clear();
                 for (int i = 0; i < board.length; i++) {
-                    list_itemArrayList.add(new ArticleVO(board[i].getId(), board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+                    list_itemArrayList.add(new ArticleVO(board[i].getId(), board[i].getTitle(), board[i].getContents(), board[i].getCategoryId(), board[i].getAuthor()));
                 }
                 adapter = new FreeListViewAdapter(root.getContext(), list_itemArrayList);
                 listView.setAdapter(adapter);
@@ -172,7 +172,7 @@ public class Freefragment extends Fragment {
                         }
                     }
                     for (int i = 0; i < board.length; i++) {
-                        list_itemArrayList.add(new ArticleVO(board[i].getId(), board[i].getTitle(), board[i].getContents(), board[i].getId(), board[i].getAuthor()));
+                        list_itemArrayList.add(new ArticleVO(board[i].getId(), board[i].getTitle(), board[i].getContents(), board[i].getCategoryId(), board[i].getAuthor()));
                         System.out.println(board[i].getTitle() + "~~~10개 추가");
                     }
 //                    list_itemArrayList.add(new ArticleVO("추가1", "ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ", 1, new Author("a", "a", "a")));

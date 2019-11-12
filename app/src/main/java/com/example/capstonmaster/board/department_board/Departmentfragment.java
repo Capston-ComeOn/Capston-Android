@@ -1,4 +1,4 @@
-package com.example.capstonmaster.board.login;
+package com.example.capstonmaster.board.department_board;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import com.example.capstonmaster.R;
 import com.hamza.slidingsquaresloaderview.SlidingSquareLoaderView;
 
-public class Loginfragment extends Fragment {
+public class Departmentfragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.frament_login, container, false);
+        View root = inflater.inflate(R.layout.frament_department, container, false);
         SlidingSquareLoaderView slidingview = root.findViewById(R.id.sliding_view2);
         slidingview.start();    // starts the sliding
 //        slidingview.stop();     // stops the sliding

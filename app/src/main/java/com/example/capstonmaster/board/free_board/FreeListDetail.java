@@ -35,6 +35,7 @@ import okhttp3.Response;
 public class FreeListDetail extends AppCompatActivity {
     SharedPreferences sf;
     String userToken;
+    ArticleVO list;
     long articleId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class FreeListDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
 //        id=intent.getIntExtra("position",0)+101;
-        ArticleVO list = (ArticleVO) intent.getSerializableExtra("detail");
+        list = (ArticleVO) intent.getSerializableExtra("detail");
         articleId= list.getId();
         nickname.setText(list.getAuthor().getName());
         title.setText(list.getTitle());
@@ -87,6 +88,12 @@ public class FreeListDetail extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_update:
                 Toast.makeText(getApplicationContext(), " 수정", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getApplicationContext(),FreeWriteActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("title",list.getTitle());
+                intent.putExtra("contents",list.getContents());
+                intent.putExtra("articleId",articleId);
+                startActivity(intent);
                 return true;
             case R.id.action_delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -113,6 +120,8 @@ public class FreeListDetail extends AppCompatActivity {
 
     void deleteBoardList() {
         OkHttpClient client = new OkHttpClient();
+        System.out.println("========================");
+        System.out.println(articleId);
         final Request request = new Request.Builder()
                 .header(getString(R.string.Authorization), "Bearer " +userToken )
                 .url(getString(R.string.ip) + "/api/article/"+articleId)

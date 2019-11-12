@@ -9,7 +9,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
 
       <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,12 +18,14 @@
         android:layout_height="wrap_content"
         android:background="#038ECC"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/tabs"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:background="#0074a8"-->
-<!--            app:tabIndicatorColor="#9B9999"-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#0074a8"
+            app:tabMode="scrollable"
+            app:tabIndicatorColor="#9B9999"
+app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1">
 <!--            app:tabTextAppearance="@style/TextAppearance.AppCompat.Display1">-->
 <!--            <com.google.android.material.tabs.TabItem-->
 <!--                android:layout_width="wrap_content"-->
@@ -38,23 +41,24 @@
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:text="공지사항"/>-->
-<!--        </com.google.android.material.tabs.TabLayout>-->
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/mento_menti"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="멘토/멘티게시판"/>-->
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:id="@+id/aaa"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="무슨게시판"/>-->
+        </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-      <androidx.viewpager.widget.PagerTabStrip
-        android:id="@+id/pagertabstrip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#0074a8"
-        android:paddingTop="10dp"
-
-        android:paddingBottom="10dp" />
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
 <!--    <include layout="@layout/content_main" />-->
 

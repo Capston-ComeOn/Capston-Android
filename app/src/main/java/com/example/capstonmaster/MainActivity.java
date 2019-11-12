@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private int REQUEST_TEST = 1;
     TextView h_email;
     TextView h_nickname;
+    ImageButton imageButton;
     String id;
     String[] category;
     FragmentManager fragmentManager;
@@ -103,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
         //toolBar를 통해 App Bar 생성
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        toolbar.setTitleTextColor(Color.parseColor("#B0BEC5"));
-//    toolbar.setBackgroundColor(Color.parseColor("#ffffff"));
+//      toolbar.setTitleTextColor(Color.parseColor("#B0BEC5"));
+//      toolbar.setBackgroundColor(Color.parseColor("#ffffff"));
 
         fragmentManager=getSupportFragmentManager();
         sectionsPageAdapter = new SectionsPageAdapter(fragmentManager);

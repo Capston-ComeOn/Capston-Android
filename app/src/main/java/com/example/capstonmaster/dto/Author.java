@@ -4,37 +4,57 @@ import java.io.Serializable;
 
 public class Author implements Serializable {
 
-    private String email;
-    private String password;
-    private String name;
+  private Long id;
+  private String name;
+  private String email;
+  private String studentId;
 
     public Author(String email, String password, String name) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
+      this.id = id;
+      this.name = name;
+      this.email = email;
+      this.studentId = studentId;
     }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setStudentId(String studentId) {
+    this.studentId = studentId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getStudentId() {
+    return studentId;
+  }
+
+  @Override
+  public String toString() {
+    return "Author{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", email='" + email + '\'' +
+      ", studentId='" + studentId + '\'' +
+      '}';
+  }
 }

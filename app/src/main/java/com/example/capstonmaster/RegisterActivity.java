@@ -30,8 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 
   String access_token;
   public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-  //private EditText et_id, et_pass, et_name, et_age;
-  //private Button btn_register;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) { //액티비티 시작시 처음으로 실행되는 생명주기

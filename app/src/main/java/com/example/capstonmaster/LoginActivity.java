@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
           sf= getSharedPreferences("pref", MODE_PRIVATE);
           SharedPreferences.Editor editor=sf.edit();
-          editor.putString("userToken", access_token);
+          editor.putString("access_token", access_token);
           editor.commit();
 
           System.out.println("성공");

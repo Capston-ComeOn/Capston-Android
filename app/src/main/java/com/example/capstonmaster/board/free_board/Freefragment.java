@@ -270,8 +270,6 @@ public class Freefragment extends Fragment {
 //
 ///api/article/category?size=10&page=0
     public void getBoard() {
-
-
         System.out.println(id + "카테고리 아이디값~~~~~~~~~~~~~~~~~~~~~");
 
         OkHttpClient client = new OkHttpClient();
@@ -308,8 +306,6 @@ public class Freefragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-
-
         });
     }
 

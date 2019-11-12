@@ -110,6 +110,7 @@ public class Freefragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(root.getContext(), FreeListDetail.class);
                 intent.putExtra("detail", list_itemArrayList.get(position));
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                intent.putExtra("articleId",position);
                 startActivityForResult(intent, REQUEST_TEST);
             }

@@ -62,7 +62,6 @@ public class FreeListDetail extends AppCompatActivity {
         Button commentButton = (Button) findViewById(R.id.commentButton);
 
         Intent intent = getIntent();
-//        id=intent.getIntExtra("position",0)+101;
         list = (ArticleVO) intent.getSerializableExtra("detail");
         articleId= list.getId();
         nickname.setText(list.getAuthor().getName());

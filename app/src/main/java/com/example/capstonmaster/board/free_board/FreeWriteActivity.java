@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.capstonmaster.MainActivity;
 import com.example.capstonmaster.R;
 import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.dto.Author;
@@ -40,7 +41,7 @@ public class FreeWriteActivity extends AppCompatActivity {
     SharedPreferences sf;
     String userToken;
     Intent intent;
-    int articleId;
+    long articleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,8 @@ public class FreeWriteActivity extends AppCompatActivity {
         if (intent != null) {
             title.setText(intent.getStringExtra("title"));
             contents.setText(intent.getStringExtra("contents"));
-            articleId = intent.getIntExtra("articleId", 0);
+            articleId = intent.getLongExtra("articleId", 0);
+            System.out.println(articleId +"articleId 수정값받아온거~~~~~~~~~~~");
         }
 
 
@@ -120,8 +122,10 @@ public class FreeWriteActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             System.out.println("글수정성공?" + response.body() + response.message());
+                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             setResult(RESULT_OK);
-                            finish();
+                            startActivity(intent);
                         }
                     });
 

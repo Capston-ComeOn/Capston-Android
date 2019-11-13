@@ -47,7 +47,7 @@ public class Freefragment extends Fragment {
 
     int page;
     private int REQUEST_TEST = 1;
-
+    private int REQUEST_TEST2 = 2;
     ArticleVO[] board;
     public static String id;
     public static String category;
@@ -57,7 +57,14 @@ public class Freefragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_TEST) {
             if (resultCode == -1) {
-                ((MainActivity)getActivity()).InitializeLayout();
+//                ((MainActivity)getActivity()).InitializeLayout();
+                ((MainActivity)getActivity()).viewPager.setCurrentItem(((MainActivity)getActivity()).tabLayout.getSelectedTabPosition());
+                System.out.println("onActivityResult 성공");
+            }
+        }
+        if (requestCode == REQUEST_TEST2) {
+            if (resultCode == -1) {
+//                ((MainActivity)getActivity()).InitializeLayout();
                 ((MainActivity)getActivity()).viewPager.setCurrentItem(((MainActivity)getActivity()).tabLayout.getSelectedTabPosition());
                 System.out.println("onActivityResult 성공");
             }
@@ -68,6 +75,7 @@ public class Freefragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_free, container, false);
 
+        System.out.println("프래그먼트온크리뷰");
         sf = root.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         userToken = sf.getString("userToken", "");
 
@@ -117,14 +125,13 @@ public class Freefragment extends Fragment {
         });
 
 
-        System.out.println("프래그먼트온크리뷰");
         FloatingActionButton fab = root.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(root.getContext(), "눌림", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), FreeWriteActivity.class);
-                startActivityForResult(intent, REQUEST_TEST);
+                startActivityForResult(intent, REQUEST_TEST2);
             }
         });
 

@@ -4,6 +4,10 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
+            android:title="홈"
+            android:id="@+id/home"
+            />
+        <item
             android:title="학과연혁"
             android:id="@+id/story"
             />

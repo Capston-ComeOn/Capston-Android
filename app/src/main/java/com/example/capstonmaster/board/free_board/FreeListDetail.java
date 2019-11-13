@@ -37,6 +37,24 @@ public class FreeListDetail extends AppCompatActivity {
     String userToken;
     ArticleVO list;
     long articleId;
+    TextView title;
+    TextView content;
+    private int REQUEST_TEST = 2;
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_TEST) {
+            if (resultCode == RESULT_OK) {
+//                ((MainActivity)getActivity()).InitializeLayout();
+//                ((MainActivity)getActivity()).viewPager.setCurrentItem(((MainActivity)getActivity()).tabLayout.getSelectedTabPosition());
+                String getTitle=data.getStringExtra("title");
+                String getContents=data.getStringExtra("contents");
+                title.setText(getTitle);
+                content.setText(getContents);
+                System.out.println("글수정 onActivityResult 성공");
+            }
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +74,8 @@ public class FreeListDetail extends AppCompatActivity {
         userToken = sf.getString("userToken", "");
 
         TextView nickname = findViewById(R.id.nickname_detail);
-        TextView title = findViewById(R.id.title_detail);
-        TextView content = findViewById(R.id.content_detail);
+        title = findViewById(R.id.title_detail);
+        content = findViewById(R.id.content_detail);
         //TextView commentwindow = findViewById(R.id.commentWindow);
         Button commentButton = (Button) findViewById(R.id.commentButton);
 
@@ -88,11 +106,11 @@ public class FreeListDetail extends AppCompatActivity {
             case R.id.action_update:
                 Toast.makeText(getApplicationContext(), " 수정", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getApplicationContext(),FreeWriteActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("title",list.getTitle());
                 intent.putExtra("contents",list.getContents());
                 intent.putExtra("articleId",articleId);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_TEST);
                 return true;
             case R.id.action_delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);

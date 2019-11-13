@@ -1,5 +1,6 @@
 package com.example.capstonmaster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     setContentView(R.layout.activity_register);
 
     Button Rgbtn_register = (Button) findViewById(R.id.Rgbtn_register);
+    Button back_login = findViewById(R.id.back_login);
     RgpassText = (TextView) findViewById(R.id.rg_pass);
     RglastnameText = (TextView) findViewById(R.id.rg_lastname);
     RgfirstnameText = (TextView) findViewById(R.id.rg_firstname);
@@ -57,6 +59,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
       }
     });
+    back_login.setOnClickListener(new Button.OnClickListener(){
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
+      }
+    });
+
   }
 
   public void postRegister() {

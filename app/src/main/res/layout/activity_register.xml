@@ -1,101 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".RegisterActivity">
 
   <EditText
-      android:id="@+id/rg_lastname"
-      android:layout_width="80dp"
-      android:layout_height="50dp"
-      android:layout_marginTop="40dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      android:ems="10"
-      android:hint="성"
-      android:inputType="textWebEmailAddress"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.266"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/rg_lastname"
+    android:layout_width="60dp"
+    android:layout_height="50dp"
+    android:layout_above="@+id/rg_email"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+
+    android:layout_marginLeft="50dp"
+
+    android:layout_marginBottom="5dp"
+    android:ems="10"
+    android:hint="성"
+    android:inputType="textWebEmailAddress" />
 
   <EditText
-      android:id="@+id/rg_firstname"
-      android:layout_width="160dp"
-      android:layout_height="50dp"
-      android:layout_marginTop="40dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      android:ems="10"
-      android:hint="이름"
-      android:inputType="textWebEmailAddress"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toEndOf="@+id/rg_lastname"
-      app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/rg_firstname"
+    android:layout_width="180dp"
+    android:layout_height="50dp"
+    android:layout_above="@+id/rg_email"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="5dp"
+    android:ems="10"
+    android:hint="이름"
+    android:inputType="textWebEmailAddress" />
 
   <EditText
-      android:id="@+id/rg_email"
-      android:layout_width="240dp"
-      android:layout_height="50dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginTop="20dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      android:ems="10"
-      android:hint="이메일"
-      android:inputType="textPersonName"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/rg_lastname" />
+    android:id="@+id/rg_email"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:layout_above="@+id/rg_pass"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginLeft="50dp"
+
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="5dp"
+    android:ems="10"
+    android:hint="이메일"
+    android:inputType="textPersonName" />
 
   <EditText
-      android:id="@+id/rg_pass"
-      android:layout_width="240dp"
-      android:layout_height="50dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginTop="20dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      android:ems="10"
-      android:hint="비밀번호"
-      android:inputType="textPassword"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/rg_email" />
+    android:id="@+id/rg_pass"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:layout_above="@+id/rg_repass"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginLeft="50dp"
+
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="5dp"
+    android:ems="10"
+    android:hint="비밀번호"
+    android:inputType="textPassword" />
 
   <EditText
-      android:id="@+id/rg_repass"
-      android:layout_width="240dp"
-      android:layout_height="50dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginTop="20dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      android:ems="10"
-      android:hint="비밀번호 확인"
-      android:inputType="textPassword"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/rg_pass" />
+    android:id="@+id/rg_repass"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:layout_above="@+id/Rgbtn_register"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="20dp"
+    android:ems="10"
+    android:hint="비밀번호 확인"
+    android:inputType="textPassword" />
 
   <Button
-      android:id="@+id/Rgbtn_register"
-      android:layout_width="220dp"
-      android:layout_height="74dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginTop="30dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      android:background="#CFD8DC"
-      android:text="회원가입"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/rg_repass" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:id="@+id/Rgbtn_register"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:layout_above="@+id/back_login"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/roundedbutton"
+    android:text="회원가입" />
+
+  <TextView
+    android:id="@+id/Comeon"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:layout_above="@+id/rg_firstname"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginBottom="50dp"
+    android:fontFamily="@font/bmhannaair_ttf"
+    android:text="Come on!"
+    android:textAlignment="center"
+    android:textColor="#000000"
+    android:textSize="60sp" />
+
+  <Button
+    android:id="@+id/back_login"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    android:layout_width="wrap_content"
+    android:layout_height="55dp"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentBottom="true"
+    android:text="이미 회원인가요? 여기를 누르면 로그인 화면으로 이동합니다."
+    android:textSize="15sp"
+    android:textColor="#000000" />
+</RelativeLayout>

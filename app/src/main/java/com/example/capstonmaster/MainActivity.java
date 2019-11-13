@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public ViewPager viewPager;
     public TabLayout tabLayout;
     private SectionsPageAdapter sectionsPageAdapter;
+    private HomePageAdapter homePageAdapter;
     private MentoPageAdapter mentoPageAdapter;
     SharedPreferences sf;
     String userToken;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     TabLayout.TabLayoutOnPageChangeListener tabLayoutOnPageChangeListener;
     TabLayout.OnTabSelectedListener onTabSelectedListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
         headerView = navigationView.getHeaderView(0);
         ImageButton imagebutton = headerView.findViewById(R.id.imageButton);
         imagebutton.setOnClickListener(new Button.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), Mypage.class);
-            startActivity(intent);
-          }
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Mypage.class);
+                startActivity(intent);
+            }
         });
     }
 
@@ -118,13 +120,15 @@ public class MainActivity extends AppCompatActivity {
 //      toolbar.setTitleTextColor(Color.parseColor("#B0BEC5"));
 //      toolbar.setBackgroundColor(Color.parseColor("#ffffff"));
 
-        fragmentManager=getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
+        homePageAdapter = new HomePageAdapter(fragmentManager);
         sectionsPageAdapter = new SectionsPageAdapter(fragmentManager);
-        mentoPageAdapter=new MentoPageAdapter(fragmentManager);
+        mentoPageAdapter = new MentoPageAdapter(fragmentManager);
         viewPager = findViewById(R.id.viewpager);
-        viewPager.setAdapter(sectionsPageAdapter);
+        viewPager.setAdapter(homePageAdapter);
         tabLayout = findViewById(R.id.tabs);
-        if(category==null){
+        tabLayout.setVisibility(View.GONE);
+        if (category == null) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -134,25 +138,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < category.length; i++) {
             tabLayout.addTab(tabLayout.newTab().setText(category[i]));
         }
-//    tabLayout.setupWithViewPager(viewPager);
-
-//        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-
 //        tabLayoutOnPageChangeListener = new TabLayout.TabLayoutOnPageChangeListener(tabLayout);
-
 
 
         //App Bar의 좌측 영영에 Drawer를 Open 하기 위한 Incon 추가
@@ -201,17 +187,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
+                    case R.id.home:
+                        Toast.makeText(getApplicationContext(), "홈", Toast.LENGTH_SHORT).show();
+                        viewPager.clearOnPageChangeListeners();
+                        viewPager.setAdapter(homePageAdapter);
+                        tabLayout.setVisibility(View.GONE);
+                        break;
                     case R.id.free:
                         Toast.makeText(getApplicationContext(), "자유", Toast.LENGTH_SHORT).show();
-                        tabLayout.setVisibility(View.VISIBLE);
-                        viewPager.setAdapter(sectionsPageAdapter);
-                        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-                        viewPager.setCurrentItem(0);
+                        boardPageInit();
+//                        tabLayout.setVisibility(View.VISIBLE);
+//                        viewPager.setAdapter(sectionsPageAdapter);
+//                        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+//                        viewPager.setCurrentItem(0);
                         break;
-//                    case R.id.notice:
-//                        Toast.makeText(getApplicationContext(), "공지", Toast.LENGTH_SHORT).show();
-//                        viewPager.setCurrentItem(2);
-//                        break;
+
                     case R.id.mento_menti:
                         Toast.makeText(getApplicationContext(), "멘토", Toast.LENGTH_SHORT).show();
 //                        fragmentManager.beginTransaction().replace(R.id.viewpager,new MentoFragment()).commit();
@@ -230,15 +220,43 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void boardPageInit() {
+        tabLayout.setVisibility(View.VISIBLE);
+        viewPager.setAdapter(sectionsPageAdapter);
+//        for (int i = 0; i < category.length; i++) {
+//            tabLayout.addTab(tabLayout.newTab().setText(category[i]));
+//        }
+//    tabLayout.setupWithViewPager(viewPager);
+
+//        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
-        System.out.println("메인일시정지");    }
+        System.out.println("메인일시정지");
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("메인재개");    }
+        System.out.println("메인재개");
+    }
 
     @Override
     protected void onRestart() {
@@ -264,19 +282,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        SharedPreferences.Editor editor=sf.edit();
+        SharedPreferences.Editor editor = sf.edit();
         editor.remove("pref");
         editor.commit();
         System.out.println("토큰지움");
         super.onDestroy();
     }
-    public void getBoardList(){
+
+    public void getBoardList() {
 
         OkHttpClient client = new OkHttpClient();
 
         final Request request = new Request.Builder()
-                .header(getString(R.string.Authorization), "Bearer "+userToken)
-                .url(getString(R.string.ip)+"/api/article/category")
+                .header(getString(R.string.Authorization), "Bearer " + userToken)
+                .url(getString(R.string.ip) + "/api/article/category")
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -289,12 +308,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     JSONArray jsonArray = new JSONArray(response.body().string());
-                    category=new String[jsonArray.length()];
+                    category = new String[jsonArray.length()];
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonobject = jsonArray.getJSONObject(i);
-                         id   = jsonobject.getString("id");
+                        id = jsonobject.getString("id");
                         category[i] = jsonobject.getString("name");
-                        switch (id){
+                        switch (id) {
                             case "1":
                                 break;
                             case "2":
@@ -305,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
                             case "4":
                                 break;
                         }
-                        System.out.println(id+" "+ category);
+                        System.out.println(id + " " + category);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -315,6 +334,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
     public void getAccount() {
         //System.out.println("=======" + access_token);
         OkHttpClient client = new OkHttpClient();

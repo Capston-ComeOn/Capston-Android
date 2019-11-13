@@ -65,10 +65,10 @@ public class FreeWriteActivity extends AppCompatActivity {
         userToken = sf.getString("userToken", "");
 
         intent = getIntent();
-        if (intent != null) {
+        articleId = intent.getLongExtra("articleId", 0);
+        if (articleId != 0) {
             title.setText(intent.getStringExtra("title"));
             contents.setText(intent.getStringExtra("contents"));
-            articleId = intent.getLongExtra("articleId", 0);
             System.out.println(articleId +"articleId 수정값받아온거~~~~~~~~~~~");
         }
 
@@ -88,7 +88,7 @@ public class FreeWriteActivity extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient();
                 Gson gson = new Gson();
                 String json = gson.toJson(new ArticleVO(title.getText().toString(), contents.getText().toString()));
-                if (intent == null) {
+                if (articleId == 0) {
                     final Request request = new Request.Builder()
                             .header(getString(R.string.Authorization), "Bearer " + userToken)
                             .url(getString(R.string.ip) + "/api/article/" + 2)
@@ -122,10 +122,13 @@ public class FreeWriteActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             System.out.println("글수정성공?" + response.body() + response.message());
-                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            setResult(RESULT_OK);
-                            startActivity(intent);
+                            Intent intent=new Intent(getApplicationContext(),FreeListDetail.class);
+                            intent.putExtra("title",title.getText().toString());
+                            intent.putExtra("contents",contents.getText().toString());
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                            setResult(RESULT_OK,intent);
+                            finish();
                         }
                     });
 

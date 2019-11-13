@@ -7,26 +7,22 @@
   tools:context=".LoginActivity">
 
   <TextView
-      android:id="@+id/Comeon"
-      android:layout_width="409dp"
-      android:layout_height="wrap_content"
-      android:layout_above="@+id/et_id"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentLeft="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentRight="true"
-      android:layout_marginStart="2dp"
-      android:layout_marginLeft="2dp"
-      android:layout_marginTop="189dp"
-      android:layout_marginEnd="0dp"
-      android:layout_marginRight="0dp"
-      android:layout_marginBottom="60dp"
-      android:fontFamily="@font/bmhannaair_ttf"
-      android:text="Come on!"
-      android:textAlignment="center"
-      android:textColor="#000000"
-      android:textSize="60sp" />
+    android:id="@+id/Comeon"
+    android:layout_width="409dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+
+    android:layout_marginTop="100dp"
+
+    android:fontFamily="@font/bmhannaair_ttf"
+    android:text="Come on!"
+    android:textAlignment="center"
+    android:textColor="#000000"
+    android:textSize="60sp" />
 
   <EditText
       android:id="@+id/et_id"
@@ -94,10 +90,10 @@
     android:layout_marginLeft="8dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="8dp"
-    android:layout_marginBottom="60dp"
+    android:layout_marginBottom="50dp"
     android:text="아직 회원이 아니신가요?  여기를 클릭해주세요!"
-    android:textSize="15sp"
-    android:textColor="#000000" />
+    android:textColor="#000000"
+    android:textSize="15sp" />
 
 
 

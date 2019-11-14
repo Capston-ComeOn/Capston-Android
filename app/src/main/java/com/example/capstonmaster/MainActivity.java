@@ -23,6 +23,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.capstonmaster.board.free_board.Freefragment;
 import com.example.capstonmaster.dto.Author;
+import com.example.capstonmaster.metoring.MentoPageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;

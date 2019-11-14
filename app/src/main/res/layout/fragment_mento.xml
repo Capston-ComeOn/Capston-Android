@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".metoring.MentoFragment">
+    tools:context=".metoring.MentoFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/mento_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/bmhannaair_ttf"
         android:text="멘토링" />
+    <Button
+        android:layout_gravity="end"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="작성하기"
+        android:background="@color/lavender"
+        android:id="@+id/mento_write"></Button>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mento_recycle"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/mento_top"
+        android:scrollbars="horizontal"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

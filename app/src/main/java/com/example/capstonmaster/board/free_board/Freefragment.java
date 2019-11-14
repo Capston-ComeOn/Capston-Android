@@ -92,11 +92,11 @@ public class Freefragment extends Fragment {
         int c = 0;
         while (board == null) {
             try {
+                Thread.sleep(500);
                 if (c == 5) {
                     getBoard();
                 }
                 c++;
-                Thread.sleep(500);
                 System.out.println("board 무한대기중");
             } catch (InterruptedException e) {
                 e.printStackTrace();

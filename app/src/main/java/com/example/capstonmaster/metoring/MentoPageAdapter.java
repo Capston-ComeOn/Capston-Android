@@ -1,4 +1,4 @@
-package com.example.capstonmaster;
+package com.example.capstonmaster.metoring;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

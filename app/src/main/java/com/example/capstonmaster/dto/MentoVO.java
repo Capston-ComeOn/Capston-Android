@@ -7,15 +7,17 @@ import java.util.Date;
 
 public class MentoVO implements Serializable {
     private String content;
-    private Timestamp endTime;
+    private LocalDateTime endTime;
     private MentoInfo introduce;
-    private Timestamp startTime;
+    private LocalDateTime startTime;
     private String title;
     private long id;
     private Author mento;
     private Author[] mentees;
 
-    public MentoVO(String content, Timestamp endTime, MentoInfo introduce, Timestamp startTime, String title, long id, Author mento, Author[] mentees) {
+
+
+    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees) {
         this.content = content;
         this.endTime = endTime;
         this.introduce = introduce;
@@ -25,7 +27,13 @@ public class MentoVO implements Serializable {
         this.mento = mento;
         this.mentees = mentees;
     }
-
+    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title) {
+        this.content = content;
+        this.endTime = endTime;
+        this.introduce = introduce;
+        this.startTime = startTime;
+        this.title = title;
+    }
     public String getContent() {
         return content;
     }
@@ -34,11 +42,11 @@ public class MentoVO implements Serializable {
         this.content = content;
     }
 
-    public Timestamp getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -50,11 +58,11 @@ public class MentoVO implements Serializable {
         this.introduce = introduce;
     }
 
-    public Timestamp getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 

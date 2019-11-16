@@ -106,7 +106,7 @@ public class MentoFragment extends Fragment {
 
                     System.out.println(jsonArray.optString(1)+"뭐라도찍어봐");
                     Gson gson = new GsonBuilder()
-                            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+//                            .setDateFormat("yyyy-MM-dd HH:mm:ss")
                             .create();
                     vo = gson.fromJson(jsonArray.toString(),MentoVO[].class);
                     System.out.println(vo[0].getTitle()+" "+vo[0].getContent()+" "+vo[0].getStartTime());

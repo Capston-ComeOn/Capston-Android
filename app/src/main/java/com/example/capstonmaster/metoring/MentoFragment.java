@@ -19,11 +19,18 @@ import com.example.capstonmaster.R;
 import com.example.capstonmaster.dto.MentoVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -60,11 +67,11 @@ public class MentoFragment extends Fragment {
         int c = 0;
         while (mentoList.size() == 0) {
             try {
-                Thread.sleep(500);
-                if (c == 5) {
+                c++;
+                Thread.sleep(1000);
+                if (c %5==0) {
                     getMentoringList();
                 }
-                c++;
                 System.out.println("getMentoringList 대기중");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -105,9 +112,14 @@ public class MentoFragment extends Fragment {
                     JSONArray jsonArray = new JSONArray(response.body().string());
 
                     System.out.println(jsonArray.optString(1)+"뭐라도찍어봐");
-                    Gson gson = new GsonBuilder()
-//                            .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                            .create();
+//                    Gson gson = new GsonBuilder()
+////                            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+//                            .create();
+//                    Gson gson = new Gson();
+                    Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+                        @Override public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                            return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); } }).create();
+
                     vo = gson.fromJson(jsonArray.toString(),MentoVO[].class);
                     System.out.println(vo[0].getTitle()+" "+vo[0].getContent()+" "+vo[0].getStartTime());
                     for (int i=0; i<vo.length; i++) {

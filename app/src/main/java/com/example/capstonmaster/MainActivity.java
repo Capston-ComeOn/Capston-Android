@@ -73,6 +73,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         getBoardList();
+        int c = 0;
+        while (category==null) {
+            try {
+                c++;
+                Thread.sleep(500);
+                if (c % 5==0) {
+                    getBoardList();
+                }
+                System.out.println("category 대기중");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         this.InitializeLayout();
         getAccount();
 

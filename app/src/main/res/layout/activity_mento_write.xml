@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".metoring.MentoWriteActivity">-->
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".metoring.MentoWriteActivity">
-
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".metoring.MentoWriteActivity">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="멘토링 제목" />
 
     <EditText
         android:id="@+id/mento_w_title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="딥러닝 교육" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="멘토링 내용 기술" />
 
     <EditText
         android:id="@+id/mento_w_content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="딥러닝에 대해 학교에서 배운거 보충해서 가르침" />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="멘토링 공지 기간(선택일부터 1주일간)" />
     <CalendarView
         android:id="@+id/mento_w_date"
@@ -51,12 +55,11 @@
     android:selectedWeekBackgroundColor="#ffff00"
     android:showWeekNumber="false"
     android:weekSeparatorLineColor="#00ff00"
-        android:layout_height="0dp"
-        android:layout_weight="8" />
+        android:layout_height="wrap_content"
+        />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="멘토링 대상 학년" />
 <LinearLayout
     android:layout_width="wrap_content"
@@ -65,7 +68,6 @@
         android:id="@+id/mento_w_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:checked="false"
         android:text="1학년" />
 
@@ -73,7 +75,6 @@
         android:id="@+id/mento_w_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:checked="false"
         android:text="2학년" />
 
@@ -81,7 +82,6 @@
         android:id="@+id/mento_w_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:checked="false"
         android:text="3학년"
        />
@@ -90,7 +90,6 @@
         android:id="@+id/mento_w_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:checked="false"
         android:text="4학년"
        >
@@ -98,38 +97,33 @@
 </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="모임 장소 기술" />
 
     <EditText
         android:id="@+id/mento_w_metting"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="공6 랩실" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="부연 설명 기술" />
 
     <EditText
         android:id="@+id/mento_w_etc"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="잘합시다" />
     <Button
         android:id="@+id/mento_w_register"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="등록"></Button>
-
-</LinearLayout>
+        </LinearLayout>
+    </ScrollView>

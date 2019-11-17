@@ -49,12 +49,21 @@ public class LoginActivity extends AppCompatActivity {
         getAccessToken();
 //        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //        startActivity(intent);
+          int c = 0;
+          while (access_token==null) {
+              try {
+                  Thread.sleep(500);
+                  if (c == 5) {
+                      getAccessToken();
+                      break;
+                  }
+                  c++;
+                  System.out.println("access_token 대기중");
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+          }
 
-        try {
-          Thread.sleep(2000);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
         if(access_token!=null) {
           Intent intent = new Intent(LoginActivity.this, MainActivity.class);
           startActivity(intent);

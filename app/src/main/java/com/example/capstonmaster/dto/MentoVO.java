@@ -14,10 +14,10 @@ public class MentoVO implements Serializable {
     private long id;
     private Author mento;
     private Author[] mentees;
+    private Boolean use;
 
 
-
-    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees) {
+    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
         this.content = content;
         this.endTime = endTime;
         this.introduce = introduce;
@@ -26,7 +26,10 @@ public class MentoVO implements Serializable {
         this.id = id;
         this.mento = mento;
         this.mentees = mentees;
+        this.use = use;
     }
+
+
     public MentoVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title) {
         this.content = content;
         this.endTime = endTime;

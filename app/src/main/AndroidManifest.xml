@@ -14,7 +14,7 @@
     android:theme="@style/AppTheme"
     android:usesCleartextTraffic="true">
 
-    <activity android:name=".history"></activity>
+    <activity android:name=".history.HistoryFragment"></activity>
     <activity android:name=".intro">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

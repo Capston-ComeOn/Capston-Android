@@ -28,6 +28,7 @@ import com.example.capstonmaster.board.free_board.Freefragment;
 import com.example.capstonmaster.board.promote_board.PromoteFragment;
 import com.example.capstonmaster.board.used_board.UsedFragment;
 import com.example.capstonmaster.dto.Author;
+import com.example.capstonmaster.history.HistoryPagerAdapter;
 import com.example.capstonmaster.metoring.MentoPageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private SectionsPageAdapter sectionsPageAdapter;
     private HomePageAdapter homePageAdapter;
     private MentoPageAdapter mentoPageAdapter;
+    private HistoryPagerAdapter historyPagerAdapter;
     SharedPreferences sf;
     String userToken;
     private int REQUEST_TEST = 1;
@@ -164,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
         homePageAdapter = new HomePageAdapter(fragmentManager);
         sectionsPageAdapter = new SectionsPageAdapter(fragmentManager);
         mentoPageAdapter = new MentoPageAdapter(fragmentManager);
+        historyPagerAdapter = new HistoryPagerAdapter(fragmentManager);
         viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(homePageAdapter);
         tabLayout = findViewById(R.id.tabs);
@@ -235,9 +238,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.history:
                         Toast.makeText(getApplicationContext(), "학과연혁", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, history.class);
-                        startActivity(intent);
-
+//                        Intent intent = new Intent(MainActivity.this, HistoryFragment.class);
+//                        startActivity(intent);
+                      viewPager.clearOnPageChangeListeners();
+                      viewPager.setAdapter(historyPagerAdapter);
+                      tabLayout.setVisibility(View.GONE);
                         break;
                   case R.id.free:
                     Toast.makeText(getApplicationContext(), "자유", Toast.LENGTH_SHORT).show();
@@ -260,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.logout:
                         PreferenceUtil.getInstance(getApplicationContext()).removePreference("userToken");
                         System.out.println("토큰지움");
-                        intent=new Intent(getApplicationContext(),LoginActivity.class);
+                        Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         break;

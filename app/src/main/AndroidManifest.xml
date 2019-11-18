@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".metoring.MentoWriteActivity"></activity>
+        <activity android:name=".metoring.MentoDetailActivity"></activity>
+        <activity android:name=".metoring.MentoWriteActivity" />
         <activity android:name=".Mypage" />
         <activity
             android:name=".board.free_board.FreeWriteActivity"

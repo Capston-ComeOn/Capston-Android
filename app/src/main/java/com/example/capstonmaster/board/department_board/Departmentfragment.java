@@ -31,8 +31,8 @@ import okhttp3.Response;
 
 public class Departmentfragment extends Fragment {
 
-    ListView listView;
     DepartListViewAdapter adapter;
+    ListView listView;
     ArrayList<ArticleVO> list_itemArrayList;
     String userToken;
     ArticleVO[] board;

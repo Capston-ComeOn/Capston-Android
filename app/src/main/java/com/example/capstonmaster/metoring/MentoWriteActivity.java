@@ -2,43 +2,28 @@ package com.example.capstonmaster.metoring;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.capstonmaster.R;
 import com.example.capstonmaster.Util.PreferenceUtil;
-import com.example.capstonmaster.dto.ArticleVO;
-import com.example.capstonmaster.dto.Author;
 import com.example.capstonmaster.dto.MentoInfo;
-import com.example.capstonmaster.dto.MentoVO;
+import com.example.capstonmaster.dto.MentoRequestVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -115,7 +100,7 @@ public class MentoWriteActivity extends AppCompatActivity {
                     }
                 }).create();
 
-                String json = gson.toJson(new MentoVO(e_content.getText().toString(),end ,new MentoInfo(e_etc.getText().toString()
+                String json = gson.toJson(new MentoRequestVO(e_content.getText().toString(),end ,new MentoInfo(e_etc.getText().toString()
                         ,e_mento.getText().toString(),e_metting.getText().toString(),e_target.getText().toString()),start,e_title.getText().toString()));
                 final Request request = new Request.Builder()
                         .header(getString(R.string.Authorization), "Bearer " + userToken)

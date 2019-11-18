@@ -22,8 +22,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.capstonmaster.Util.PreferenceUtil;
+import com.example.capstonmaster.board.advice_board.Advicefragment;
 import com.example.capstonmaster.board.department_board.Departmentfragment;
 import com.example.capstonmaster.board.free_board.Freefragment;
+import com.example.capstonmaster.board.promote_board.PromoteFragment;
+import com.example.capstonmaster.board.used_board.UsedFragment;
 import com.example.capstonmaster.dto.Author;
 import com.example.capstonmaster.metoring.MentoPageAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -98,6 +101,18 @@ public class MainActivity extends AppCompatActivity {
         }
         this.InitializeLayout();
         getAccount();
+        while (userName==null) {
+            try {
+                c++;
+                Thread.sleep(500);
+                if (c % 5==0) {
+                    getAccount();
+                }
+                System.out.println("userName 대기중");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         h_email.setText(email);
         h_nickname.setText(userName);
         navigationView = findViewById(R.id.nav_view);
@@ -361,8 +376,13 @@ public class MainActivity extends AppCompatActivity {
                                 Freefragment.id = id;
                                 break;
                             case "3":
+                                Advicefragment.id=id;
                                 break;
                             case "4":
+                                UsedFragment.id=id;
+                                break;
+                            case "5":
+                                PromoteFragment.id=id;
                                 break;
                         }
                         System.out.println(id + " " + category[i]);

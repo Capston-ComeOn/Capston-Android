@@ -14,6 +14,9 @@ public class MentoResponseVO implements Serializable {
     private Author[] mentees;
     private Boolean use;
 
+    public MentoResponseVO() {
+    }
+
     public MentoResponseVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
         this.content = content;
         this.endTime = endTime;

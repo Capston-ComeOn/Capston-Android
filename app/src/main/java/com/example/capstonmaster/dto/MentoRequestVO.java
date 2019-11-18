@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class MentoVO implements Serializable {
+public class MentoRequestVO implements Serializable {
     private String content;
     private LocalDateTime endTime;
     private MentoInfo introduceRequestDto;
@@ -17,7 +17,7 @@ public class MentoVO implements Serializable {
     private Boolean use;
 
 
-    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
+    public MentoRequestVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
         this.content = content;
         this.endTime = endTime;
         this.introduceRequestDto = introduceRequestDto;
@@ -28,7 +28,7 @@ public class MentoVO implements Serializable {
         this.mentees = mentees;
         this.use = use;
     }
-    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title) {
+    public MentoRequestVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title) {
         this.content = content;
         this.endTime = endTime;
         this.introduceRequestDto = introduceRequestDto;

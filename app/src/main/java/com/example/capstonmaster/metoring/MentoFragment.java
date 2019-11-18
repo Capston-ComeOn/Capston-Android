@@ -1,9 +1,7 @@
 package com.example.capstonmaster.metoring;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,12 +12,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 
 import com.example.capstonmaster.R;
 import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.MentoResponseVO;
-import com.example.capstonmaster.dto.MentoVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -143,7 +141,7 @@ public class MentoFragment extends Fragment {
                     }else {
                         System.out.println(vo[0].getTitle() + " " + vo[0].getContent() + " " + vo[0].getStartTime()+" "+vo[0].getIntroduce());
                         for (int i = 0; i < vo.length; i++) {
-//                        mentoList.add(new MentoVO(vo[i].getContent(),vo[i].getEndTime(),vo[i].getIntroduce(),vo[i].getStartTime(),vo[i].getTitle(),vo[i].getId()));
+//                        mentoList.add(new MentoRequestVO(vo[i].getContent(),vo[i].getEndTime(),vo[i].getIntroduce(),vo[i].getStartTime(),vo[i].getTitle(),vo[i].getId()));
                             mentoList.add(vo[i]);
                         }
                     }

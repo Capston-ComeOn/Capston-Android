@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
   TextView RglastnameText;
   TextView RgfirstnameText;
   TextView RgemailText;
-  TextView RgrepassText;
+  TextView RgrepassText,sId;
 
   String access_token;
   public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     RgfirstnameText = (TextView) findViewById(R.id.rg_firstname);
     RgemailText = (TextView) findViewById(R.id.rg_email);
     RgrepassText = (TextView) findViewById(R.id.rg_repass);
-
+    sId=findViewById(R.id.rg_sid);
     Rgbtn_register.setOnClickListener(new Button.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -76,7 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
     String lastname = RglastnameText.getText().toString();
     String firstname = RgfirstnameText.getText().toString();
     String password = RgpassText.getText().toString();
-    String json = gson.toJson(new Author(email,password,lastname+firstname));
+    String sid= sId.getText().toString();
+    String json = gson.toJson(new Author(email,lastname+firstname,password,sid));
 
 
     final Request request = new Request.Builder()

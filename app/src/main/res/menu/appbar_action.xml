@@ -7,9 +7,9 @@
         android:title="Search"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_action_setting"
-        android:title="Settings"
-        app:showAsAction="always"/>
+  <item
+    android:id="@+id/action_message"
+    android:icon="@drawable/ic_action_message"
+    android:title="Settings"
+    app:showAsAction="always" />
 </menu>

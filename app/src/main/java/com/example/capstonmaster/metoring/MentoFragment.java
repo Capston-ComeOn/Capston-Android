@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.capstonmaster.R;
+import com.example.capstonmaster.Util.PreferenceUtil;
+import com.example.capstonmaster.dto.MentoResponseVO;
 import com.example.capstonmaster.dto.MentoVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,29 +49,27 @@ public class MentoFragment extends Fragment {
 
     RecyclerView recyclerView;
     MentoRecycleAdapter adapter;
-    ArrayList<MentoVO> mentoList;
-    SharedPreferences sf;
+    ArrayList<MentoResponseVO> mentoList;
     String userToken;
-    MentoVO[] vo;
+    MentoResponseVO[] vo;
     LinearLayoutManager layoutManager;
     private int REQUEST_CODE=1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root=inflater.inflate(R.layout.fragment_mento, container, false);
+       final View root=inflater.inflate(R.layout.fragment_mento, container, false);
         // Inflate the layout for this fragment
-        sf = root.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        userToken = sf.getString("userToken", "");
+        userToken =  PreferenceUtil.getInstance(root.getContext()).getStringExtra("userToken");
         Button writeButton = root.findViewById(R.id.mento_write);
         recyclerView = root.findViewById(R.id.mento_recycle);
         mentoList=new ArrayList<>();
 
         getMentoringList();
         int c = 0;
-        while (mentoList.size() == 0) {
+        while (vo==null) {
             try {
                 c++;
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 if (c %5==0) {
                     getMentoringList();
                 }
@@ -82,6 +83,22 @@ public class MentoFragment extends Fragment {
         adapter=new MentoRecycleAdapter(mentoList);
         recyclerView.setAdapter(adapter);
 
+       final SwipeRefreshLayout mSwipeRefreshLayout = root.findViewById(R.id.mento_swipe_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMentoringList();
+                mentoList.clear();
+                for (int i = 0; i < vo.length; i++) {
+                    mentoList.add(vo[i]);
+                }
+                layoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter=new MentoRecycleAdapter(mentoList);
+                adapter.notifyDataSetChanged();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
         writeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,11 +137,15 @@ public class MentoFragment extends Fragment {
                         @Override public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                             return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); } }).create();
 
-                    vo = gson.fromJson(jsonArray.toString(),MentoVO[].class);
-                    System.out.println(vo[0].getTitle()+" "+vo[0].getContent()+" "+vo[0].getStartTime());
-                    for (int i=0; i<vo.length; i++) {
+                    vo = gson.fromJson(jsonArray.toString(),MentoResponseVO[].class);
+                    if(vo.length==0){
+
+                    }else {
+                        System.out.println(vo[0].getTitle() + " " + vo[0].getContent() + " " + vo[0].getStartTime()+" "+vo[0].getIntroduce());
+                        for (int i = 0; i < vo.length; i++) {
 //                        mentoList.add(new MentoVO(vo[i].getContent(),vo[i].getEndTime(),vo[i].getIntroduce(),vo[i].getStartTime(),vo[i].getTitle(),vo[i].getId()));
-                        mentoList.add(vo[i]);
+                            mentoList.add(vo[i]);
+                        }
                     }
 
                 } catch (JSONException e) {

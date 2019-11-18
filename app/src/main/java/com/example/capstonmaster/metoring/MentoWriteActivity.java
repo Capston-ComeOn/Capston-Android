@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.capstonmaster.R;
+import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.dto.Author;
 import com.example.capstonmaster.dto.MentoInfo;
@@ -48,37 +49,26 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MentoWriteActivity extends AppCompatActivity {
-    String title;
-    String content;
     LocalDateTime start;
     LocalDateTime end;
-    String target;
-    String metting;
-    String etc;
-    EditText e_title, e_content, e_metting, e_etc;
-    CheckBox a1, a2, a3, a4;
+    EditText e_title, e_content, e_metting, e_etc,e_target,e_mento;
     CalendarView calendarView;
     Button register;
-    SharedPreferences sf;
     String userToken;
-    Author account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mento_write);
-        sf = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
-        userToken = sf.getString("userToken", "");
+
+        userToken =  PreferenceUtil.getInstance(getApplicationContext()).getStringExtra("userToken");
         e_title = findViewById(R.id.mento_w_title);
         e_content = findViewById(R.id.mento_w_content);
         e_metting = findViewById(R.id.mento_w_metting);
         e_etc = findViewById(R.id.mento_w_etc);
-        a1 = (CheckBox) findViewById(R.id.mento_w_1);
-        a2 = findViewById(R.id.mento_w_2);
-        a3 = findViewById(R.id.mento_w_3);
-        a4 = findViewById(R.id.mento_w_4);
+       e_target=findViewById(R.id.mento_w_target);
+       e_mento=findViewById(R.id.mento_w_mento);
         calendarView = findViewById(R.id.mento_w_date);
         register = findViewById(R.id.mento_w_register);
-        getAccount();
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
@@ -125,14 +115,8 @@ public class MentoWriteActivity extends AppCompatActivity {
                     }
                 }).create();
 
-                target="";
-                if (a1.isChecked()) {
-                    target += a1.getText().toString();
-                }
-//                String json = gson.toJson(new MentoVO(e_content.getText().toString(),end ,new MentoInfo(e_etc.getText().toString()
-//                        ,"태히 ㅇ",e_metting.getText().toString(),target),start,e_title.getText().toString()));
                 String json = gson.toJson(new MentoVO(e_content.getText().toString(),end ,new MentoInfo(e_etc.getText().toString()
-                        ,account.getName(),e_metting.getText().toString(),target),start,e_title.getText().toString()));
+                        ,e_mento.getText().toString(),e_metting.getText().toString(),e_target.getText().toString()),start,e_title.getText().toString()));
                 final Request request = new Request.Builder()
                         .header(getString(R.string.Authorization), "Bearer " + userToken)
                         .url(getString(R.string.ip) + "/api/mentoring")
@@ -146,7 +130,6 @@ public class MentoWriteActivity extends AppCompatActivity {
                                 System.out.println("멘토링등록실패");
                                 e.printStackTrace();
                             }
-
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
                                 System.out.println("멘토링등록성공?" + response.body() + response.message());
@@ -158,31 +141,6 @@ public class MentoWriteActivity extends AppCompatActivity {
         });
 
     }
-    void getAccount() {
-        //System.out.println("=======" + access_token);
-        OkHttpClient client = new OkHttpClient();
-        final Request request = new Request.Builder()
-                .header(getString(R.string.Authorization), "Bearer " + userToken)
-                .url(getString(R.string.ip) + "/api/accounts/login")
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println(e);
-                System.out.println("getAccount 실패");
-            }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    Gson gson = new Gson();
-                    account = gson.fromJson(response.body().string(), Author.class);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
 }

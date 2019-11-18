@@ -17,15 +17,19 @@
         android:textColor="@color/colorPrimaryDark"
         android:fontFamily="@font/bmhannaair_ttf"
         android:text="멘토링" />
+
     <Button
-        android:layout_gravity="end"
-        android:layout_marginRight="20dp"
+        android:id="@+id/mento_write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="등록하기"
-        android:background="@color/lavender"
-        android:id="@+id/mento_write"></Button>
-
+        android:layout_gravity="end"
+        android:layout_marginRight="20dp"
+        android:background="#EEB8F1B8"
+        android:text="등록하기"></Button>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mento_swipe_layout">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mento_recycle"
         android:layout_marginTop="30dp"
@@ -34,5 +38,5 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

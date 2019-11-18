@@ -1,5 +1,6 @@
 package com.example.capstonmaster;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.capstonmaster.Util.PreferenceUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,13 +33,19 @@ public class LoginActivity extends AppCompatActivity {
   TextView idText;
   TextView passText;
   String access_token;
-  SharedPreferences sf;
+  Context context;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
-
+    context=this.getApplicationContext();
+//    if(!PreferenceUtil.getInstance(getApplicationContext()).getStringExtra("userToken").equals("")){
+//      System.out.println(PreferenceUtil.getInstance(getApplicationContext()).getStringExtra("userToken"));
+//      Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//      startActivity(intent);
+//    }
     Button btn_login = (Button) findViewById(R.id.btn_login) ;
     Button btn_register = (Button) findViewById(R.id.btn_register) ;
     idText= (TextView)findViewById(R.id.et_id);
@@ -66,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(access_token!=null) {
           Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+          intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
           startActivity(intent);
         }else{
           Toast.makeText(LoginActivity.this, "토큰없음", Toast.LENGTH_SHORT).show();
@@ -110,10 +120,12 @@ public class LoginActivity extends AppCompatActivity {
           JSONObject jsonObject = new JSONObject(response.body().string());
           access_token = jsonObject.get("access_token").toString();
 
-          sf= getSharedPreferences("pref", MODE_PRIVATE);
-          SharedPreferences.Editor editor=sf.edit();
-          editor.putString("userToken", access_token);
-          editor.commit();
+          PreferenceUtil.getInstance(context).putStringExtra("userToken",access_token);
+
+//          sf= getSharedPreferences("pref", MODE_PRIVATE);
+//          SharedPreferences.Editor editor=sf.edit();
+//          editor.putString("userToken", access_token);
+//          editor.commit();
 
           System.out.println("성공");
           System.out.println(access_token);

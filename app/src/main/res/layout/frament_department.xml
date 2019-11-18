@@ -5,31 +5,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="279dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="92dp"
-        android:gravity="center"
-        android:text="학과게시판"
-        android:textColor="#2196F3"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/d_swipe_layout">
 
-<!--    <com.hamza.slidingsquaresloaderview.SlidingSquareLoaderView-->
-<!--        android:id="@+id/sliding_view2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="316dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:sslv_color="@color/colorPrimary"-->
-<!--        app:sslv_delay="15"-->
-<!--        app:sslv_duration="150"-->
-<!--        app:sslv_gap="2dp"-->
-<!--        app:sslv_square_length="12dp"-->
-<!--        app:sslv_start="true" />-->
+        <ListView
+            android:id="@+id/depart_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:dividerHeight="4dp"
+            android:divider="#ECEFF1"
+            />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/d_floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="#038ECC"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_edit"
+        app:elevation="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:pressedTranslationZ="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

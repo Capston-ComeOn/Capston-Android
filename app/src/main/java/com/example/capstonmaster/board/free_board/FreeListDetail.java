@@ -20,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.capstonmaster.MainActivity;
 import com.example.capstonmaster.RegisterActivity;
+import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.R;
 
@@ -33,7 +34,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class FreeListDetail extends AppCompatActivity {
-    SharedPreferences sf;
     String userToken;
     ArticleVO list;
     long articleId;
@@ -70,8 +70,7 @@ public class FreeListDetail extends AppCompatActivity {
                 finish();
             }
         });
-        sf = getSharedPreferences("pref", MODE_PRIVATE);
-        userToken = sf.getString("userToken", "");
+        userToken = PreferenceUtil.getInstance(getApplicationContext()).getStringExtra("userToken");
 
         TextView nickname = findViewById(R.id.nickname_detail);
         title = findViewById(R.id.title_detail);

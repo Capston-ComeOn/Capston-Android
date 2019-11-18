@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.Author;
 import com.google.gson.Gson;
 
@@ -20,7 +21,6 @@ import okhttp3.Response;
 public class Mypage extends AppCompatActivity {
 
   String userToken;
-  SharedPreferences sf;
   TextView mypage_email;
   TextView mypage_name;
   TextView mypage_std_id;
@@ -29,8 +29,7 @@ public class Mypage extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_mypage);
 
-    sf = getSharedPreferences("pref", MODE_PRIVATE);
-    userToken = sf.getString("userToken", "");
+    userToken =  PreferenceUtil.getInstance(getApplicationContext()).getStringExtra("userToken");
     mypage_email = findViewById(R.id.mypage_email);
     mypage_name = findViewById(R.id.mypage_name);
     mypage_std_id = findViewById(R.id.mypage_std_id);

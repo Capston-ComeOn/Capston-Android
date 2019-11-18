@@ -18,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import com.example.capstonmaster.MainActivity;
+import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,7 +43,6 @@ public class Freefragment extends Fragment {
     ListView listView;
     FreeListViewAdapter adapter;
     ArrayList<ArticleVO> list_itemArrayList;
-    SharedPreferences sf;
     String userToken;
 
     int page;
@@ -76,8 +76,9 @@ public class Freefragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_free, container, false);
 
         System.out.println("프래그먼트온크리뷰");
-        sf = root.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        userToken = sf.getString("userToken", "");
+
+//        sf = root.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        userToken = PreferenceUtil.getInstance(root.getContext()).getStringExtra("userToken");
 
         page = 2;
         while (id == null) {

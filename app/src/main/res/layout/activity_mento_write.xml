@@ -6,12 +6,12 @@
 <!--    android:layout_height="match_parent"-->
 <!--    android:orientation="vertical"-->
 <!--    tools:context=".metoring.MentoWriteActivity">-->
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="멘토링 내용 기술" />
+        android:text="멘토링 간단 설명" />
 
     <EditText
         android:id="@+id/mento_w_content"
@@ -57,61 +57,46 @@
     android:weekSeparatorLineColor="#00ff00"
         android:layout_height="wrap_content"
         />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="멘토 소개" />
+
+            <EditText
+                android:id="@+id/mento_w_mento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="본인 4학년 졸업반, 딥러닝 프로젝트 경험 유" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="모임 소개" />
+
+            <EditText
+                android:id="@+id/mento_w_metting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="공6 랩실, 일주일에 한번 정기적으로 모임" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="멘토링 대상 학년" />
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <CheckBox
-        android:id="@+id/mento_w_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="1학년" />
-
-    <CheckBox
-        android:id="@+id/mento_w_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="2학년" />
-
-    <CheckBox
-        android:id="@+id/mento_w_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="3학년"
-       />
-
-    <CheckBox
-        android:id="@+id/mento_w_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="4학년"
-       >
-    </CheckBox>
-</LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="모임 장소 기술" />
-
-    <EditText
-        android:id="@+id/mento_w_metting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="공6 랩실" />
+        android:text="멘토링 대상 소개" />
+            <EditText
+                android:id="@+id/mento_w_target"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="1,2학년 학부생 대상으로 멘티 모집예정" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="부연 설명 기술" />
+        android:text="기타 부연 설명" />
 
     <EditText
         android:id="@+id/mento_w_etc"
@@ -119,11 +104,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="잘합시다" />
-    <Button
-        android:id="@+id/mento_w_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="등록"></Button>
+        android:text="다같이 파이팅~" />
+
+            <Button
+                android:id="@+id/mento_w_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3EA1F0"
+                android:text="등록"></Button>
         </LinearLayout>
     </ScrollView>

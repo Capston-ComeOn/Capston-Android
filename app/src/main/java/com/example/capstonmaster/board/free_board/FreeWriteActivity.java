@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.capstonmaster.MainActivity;
 import com.example.capstonmaster.R;
+import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.ArticleVO;
 import com.example.capstonmaster.dto.Author;
 import com.google.gson.Gson;
@@ -38,7 +39,6 @@ import okhttp3.Response;
 public class FreeWriteActivity extends AppCompatActivity {
     EditText title;
     EditText contents;
-    SharedPreferences sf;
     String userToken;
     Intent intent;
     long articleId;
@@ -61,8 +61,8 @@ public class FreeWriteActivity extends AppCompatActivity {
 
         title = findViewById(R.id.free_title);
         contents = findViewById(R.id.free_contents);
-        sf = getApplicationContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        userToken = sf.getString("userToken", "");
+
+        userToken =  PreferenceUtil.getInstance(getApplicationContext()).getStringExtra("userToken");
 
         intent = getIntent();
         articleId = intent.getLongExtra("articleId", 0);

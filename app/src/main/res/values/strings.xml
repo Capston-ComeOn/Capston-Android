@@ -2,7 +2,7 @@
     <string name="app_name">컴정 모여라! 컴.온!</string>
 
     <string name="Authorization">Authorization</string>
-    <string name="ip">http://192.168.0.15:8090</string>
+    <string name="ip">http://192.168.0.26:8090</string>
     <string name="title_activity_free_list_detail">FreeListDetail</string>
 
     <!-- TODO: Remove or change this placeholder text -->

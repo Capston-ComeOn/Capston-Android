@@ -1,14 +1,12 @@
 package com.example.capstonmaster.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public class MentoVO implements Serializable {
+public class MentoResponseVO implements Serializable {
     private String content;
     private LocalDateTime endTime;
-    private MentoInfo introduceRequestDto;
+    private MentoInfo introduce;
     private LocalDateTime startTime;
     private String title;
     private long id;
@@ -16,11 +14,10 @@ public class MentoVO implements Serializable {
     private Author[] mentees;
     private Boolean use;
 
-
-    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
+    public MentoResponseVO(String content, LocalDateTime endTime, MentoInfo introduce, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
         this.content = content;
         this.endTime = endTime;
-        this.introduceRequestDto = introduceRequestDto;
+        this.introduce = introduce;
         this.startTime = startTime;
         this.title = title;
         this.id = id;
@@ -28,13 +25,7 @@ public class MentoVO implements Serializable {
         this.mentees = mentees;
         this.use = use;
     }
-    public MentoVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title) {
-        this.content = content;
-        this.endTime = endTime;
-        this.introduceRequestDto = introduceRequestDto;
-        this.startTime = startTime;
-        this.title = title;
-    }
+
     public String getContent() {
         return content;
     }
@@ -51,12 +42,12 @@ public class MentoVO implements Serializable {
         this.endTime = endTime;
     }
 
-    public MentoInfo getIntroduceRequestDto() {
-        return introduceRequestDto;
+    public MentoInfo getIntroduce() {
+        return introduce;
     }
 
-    public void setIntroduceRequestDto(MentoInfo introduceRequestDto) {
-        this.introduceRequestDto = introduceRequestDto;
+    public void setIntroduce(MentoInfo introduce) {
+        this.introduce = introduce;
     }
 
     public LocalDateTime getStartTime() {

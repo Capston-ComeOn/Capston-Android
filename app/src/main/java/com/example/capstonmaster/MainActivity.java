@@ -194,14 +194,20 @@ public class MainActivity extends AppCompatActivity {
                         viewPager.setAdapter(homePageAdapter);
                         tabLayout.setVisibility(View.GONE);
                         break;
-                    case R.id.free:
-                        Toast.makeText(getApplicationContext(), "자유", Toast.LENGTH_SHORT).show();
-                        boardPageInit();
+                    case R.id.history:
+                        Toast.makeText(getApplicationContext(), "학과연혁", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, history.class);
+                        startActivity(intent);
+
+                        break;
+                  case R.id.free:
+                    Toast.makeText(getApplicationContext(), "자유", Toast.LENGTH_SHORT).show();
+                    boardPageInit();
 //                        tabLayout.setVisibility(View.VISIBLE);
 //                        viewPager.setAdapter(sectionsPageAdapter);
 //                        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 //                        viewPager.setCurrentItem(0);
-                        break;
+                    break;
 
                     case R.id.mento_menti:
                         Toast.makeText(getApplicationContext(), "멘토", Toast.LENGTH_SHORT).show();

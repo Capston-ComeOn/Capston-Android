@@ -51,11 +51,21 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="91" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="fffef2" />
+                                      <entry key="foregroundImage" value="C:\Users\iam_b\Desktop\1221094-200.png" />
+                                      <entry key="outputName" value="ic_launcher_appicon" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -83,7 +93,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="paddingPercent" value="20" />
+                                                <entry key="paddingPercent" value="5" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -95,7 +106,7 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="backgroundColor" value="fffef2" />
-                                      <entry key="imageAsset" value="C:\Users\iam_b\Desktop\226188-84.png" />
+                                      <entry key="imageAsset" value="C:\Users\iam_b\Desktop\1221094-200.png" />
                                       <entry key="outputName" value="ic_launcher_appicon" />
                                     </map>
                                   </option>
@@ -123,11 +134,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

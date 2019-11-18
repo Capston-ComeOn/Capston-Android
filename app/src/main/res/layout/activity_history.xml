@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:fillViewport="true"
+ >
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center_vertical|right"
+          android:text="1993"
+          android:textStyle="bold"
+          android:textColor="#00e5ff"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+       >
+
+        <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView28"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:text="공과대학 컴퓨터 공학과 신설"
+          android:gravity="center_vertical"
+          android:textColor="#00E5FF"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView56"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#689F38"
+          android:gravity="center_vertical"
+          android:text="공과대학 정보통신공학과 신설"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:id="@+id/imageView8"
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView58"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#689F38"
+          android:gravity="center_vertical"
+          android:text="1994"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView59"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center_vertical|right"
+          android:text="1995"
+          android:textStyle="bold"
+          android:textColor="#F50057"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:id="@+id/imageView9"
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#F50057"
+          android:gravity="center_vertical"
+          android:text="교육부 지방대특성화사업 유치"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:orientation="horizontal">
+
+      <TextView
+        android:id="@+id/textView62"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="#FFC107"
+        android:gravity="center_vertical"
+        android:text="교육부 BK21 사업 참여(멀티미디어 정보통신)"
+        android:textSize="@dimen/size2" />
+    </LinearLayout>
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1.5"
+      >
+
+      <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:background="@drawable/circle"
+        />
+
+      <View
+        android:layout_width="3px"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:orientation="horizontal">
+
+      <TextView
+        android:id="@+id/textView64"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="#FFC107"
+        android:gravity="center_vertical"
+        android:text="1999"
+        android:textSize="@dimen/size1" />
+    </LinearLayout>
+  </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView63"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center_vertical|right"
+          android:text="2005"
+          android:textColor="#009688"
+          android:textSize="@dimen/size1"
+          android:textStyle="bold"/>
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:id="@+id/imageView11"
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView65"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#009688"
+          android:gravity="center_vertical"
+          android:text="컴퓨터정보통신공학 전공으로 지정"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView66"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#03A9F4"
+          android:gravity="center_vertical"
+          android:text="IT특성화학부로 소속 변경, 정통부 NEXT사업 참여(모바일 임베디드 소프트웨어)"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:id="@+id/imageView12"
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:id="@+id/textView67"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#03A9F4"
+          android:gravity="center_vertical"
+          android:text="2006"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#CDDC39"
+          android:gravity="center_vertical|right"
+          android:text="2007"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#CDDC39"
+          android:gravity="center_vertical"
+          android:text="강원대 취업우수학과 포상"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#FFEB3B"
+          android:gravity="center_vertical"
+          android:text="IT대학으로 명칭 및 소속 변경, 전공단위 학생모집"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#FFEB3B"
+          android:gravity="center_vertical"
+          android:textStyle="bold"
+          android:text="2010"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#FF5722"
+          android:gravity="center_vertical|right"
+          android:text="2013"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#FF5722"
+          android:gravity="center_vertical"
+          android:text="2012년도 학과 평가 1등급(상위10%), 우수학과 선정, 강원대학교-삼성전자 SW인력양성 프로그램 유치(삼성융합소프트웨어전공)"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center_vertical"
+          android:text="2015년도 학과평가 역량강화분야 최우수학과"
+          android:textColor="#795548"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+        <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#795548"
+          android:gravity="center_vertical"
+          android:text="2016"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#607D8B"
+          android:gravity="center_vertical|right"
+          android:text="2017"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#607D8B"
+          android:gravity="center_vertical"
+          android:text="LINC+ 사업 참여"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#FFC107"
+          android:gravity="center_vertical"
+          android:text="데이터분석센터 유치"
+          android:textSize="@dimen/size2" />
+      </LinearLayout>
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+
+        <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:background="@drawable/circle"
+          />
+        <View
+          android:layout_width="3px"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"/>
+      </FrameLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="#FFC107"
+          android:gravity="center_vertical"
+          android:text="2018"
+          android:textStyle="bold"
+          android:textSize="@dimen/size1" />
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+</ScrollView>

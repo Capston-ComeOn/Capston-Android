@@ -9,7 +9,7 @@
             />
         <item
             android:title="학과연혁"
-            android:id="@+id/story"
+            android:id="@+id/history"
             />
         <item
             android:id="@+id/free"

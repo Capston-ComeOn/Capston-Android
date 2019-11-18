@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-        <item
-            android:title="홈"
-            android:id="@+id/home"
-            />
-        <item
-            android:title="학과연혁"
-            android:id="@+id/history"
-            />
-        <item
-            android:id="@+id/free"
-            android:title="게시판" />
+      <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_action_home"
+        android:title="홈" />
+      <item
+        android:id="@+id/history"
+        android:icon="@drawable/ic_action_history"
+        android:title="학과연혁" />
+      <item
+        android:id="@+id/free"
+        android:icon="@drawable/ic_action_board"
+        android:title="게시판" />
 <!--        <item-->
 <!--            android:title="학부생 게시판">-->
 <!--            <menu>-->
@@ -31,11 +32,13 @@
 <!--                    android:title="선배의 조언" />-->
 <!--            </menu>-->
 <!--        </item>-->
-        <item
-            android:id="@+id/mento_menti"
-            android:title="멘토링" />
-        <item
-            android:id="@+id/logout"
-            android:title="로그아웃" />
+      <item
+        android:id="@+id/mento_menti"
+        android:icon="@drawable/ic_action_metoring"
+        android:title="멘토링" />
+      <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_action_logout"
+        android:title="로그아웃" />
     </group>
 </menu>

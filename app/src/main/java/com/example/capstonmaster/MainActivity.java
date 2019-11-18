@@ -144,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 this.InitializeLayout();
                 viewPager.setCurrentItem(tabLayout.getSelectedTabPosition());
                 return true;
-            case R.id.action_settings:
-                Toast.makeText(getApplicationContext(), " 설정", Toast.LENGTH_SHORT).show();
+            case R.id.action_message:
+                Toast.makeText(getApplicationContext(), " 메세지", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -5,27 +5,36 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class MentoVO implements Serializable {
+public class MentoRequestVO implements Serializable {
     private String content;
-    private Timestamp endTime;
-    private MentoInfo introduce;
-    private Timestamp startTime;
+    private LocalDateTime endTime;
+    private MentoInfo introduceRequestDto;
+    private LocalDateTime startTime;
     private String title;
     private long id;
     private Author mento;
     private Author[] mentees;
+    private Boolean use;
 
-    public MentoVO(String content, Timestamp endTime, MentoInfo introduce, Timestamp startTime, String title, long id, Author mento, Author[] mentees) {
+
+    public MentoRequestVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title, long id, Author mento, Author[] mentees, Boolean use) {
         this.content = content;
         this.endTime = endTime;
-        this.introduce = introduce;
+        this.introduceRequestDto = introduceRequestDto;
         this.startTime = startTime;
         this.title = title;
         this.id = id;
         this.mento = mento;
         this.mentees = mentees;
+        this.use = use;
     }
-
+    public MentoRequestVO(String content, LocalDateTime endTime, MentoInfo introduceRequestDto, LocalDateTime startTime, String title) {
+        this.content = content;
+        this.endTime = endTime;
+        this.introduceRequestDto = introduceRequestDto;
+        this.startTime = startTime;
+        this.title = title;
+    }
     public String getContent() {
         return content;
     }
@@ -34,27 +43,27 @@ public class MentoVO implements Serializable {
         this.content = content;
     }
 
-    public Timestamp getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
-    public MentoInfo getIntroduce() {
-        return introduce;
+    public MentoInfo getIntroduceRequestDto() {
+        return introduceRequestDto;
     }
 
-    public void setIntroduce(MentoInfo introduce) {
-        this.introduce = introduce;
+    public void setIntroduceRequestDto(MentoInfo introduceRequestDto) {
+        this.introduceRequestDto = introduceRequestDto;
     }
 
-    public Timestamp getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
@@ -88,5 +97,13 @@ public class MentoVO implements Serializable {
 
     public void setMentees(Author[] mentees) {
         this.mentees = mentees;
+    }
+
+    public Boolean getUse() {
+        return use;
+    }
+
+    public void setUse(Boolean use) {
+        this.use = use;
     }
 }

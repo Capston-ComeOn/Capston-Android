@@ -21,7 +21,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.capstonmaster.Util.PreferenceUtil;
+import com.example.capstonmaster.board.advice_board.Advicefragment;
+import com.example.capstonmaster.board.department_board.Departmentfragment;
 import com.example.capstonmaster.board.free_board.Freefragment;
+import com.example.capstonmaster.board.promote_board.PromoteFragment;
+import com.example.capstonmaster.board.used_board.UsedFragment;
 import com.example.capstonmaster.dto.Author;
 import com.example.capstonmaster.metoring.MentoPageAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -58,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     View headerView;
     NavigationView navigationView;
-
+    public static String userName;
+    String email;
     TabLayout.TabLayoutOnPageChangeListener tabLayoutOnPageChangeListener;
     TabLayout.OnTabSelectedListener onTabSelectedListener;
 
@@ -67,15 +73,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sf = getSharedPreferences("pref", MODE_PRIVATE);
-        userToken = sf.getString("userToken", "");
+
+        userToken= PreferenceUtil.getInstance(this).getStringExtra("userToken");
         System.out.println(userToken + "토큰 있음 ㅇㅇ");
 
 
         getBoardList();
+        int c = 0;
+        while (category==null) {
+            try {
+                c++;
+                Thread.sleep(500);
+                if (c % 5==0) {
+                    getBoardList();
+                }
+                if(c==10){
+                    PreferenceUtil.getInstance(getApplicationContext()).removePreference("userToken");
+                    System.out.println("토큰지움");
+                    Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+                System.out.println("category 대기중");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         this.InitializeLayout();
         getAccount();
-
+        while (userName==null) {
+            try {
+                c++;
+                Thread.sleep(500);
+                if (c % 5==0) {
+                    getAccount();
+                }
+                System.out.println("userName 대기중");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        h_email.setText(email);
+        h_nickname.setText(userName);
         navigationView = findViewById(R.id.nav_view);
         headerView = navigationView.getHeaderView(0);
         ImageButton imagebutton = headerView.findViewById(R.id.imageButton);
@@ -218,6 +257,14 @@ public class MainActivity extends AppCompatActivity {
 //                        viewPager.setOffscreenPageLimit(0);
 //                        viewPager.removeOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
                         break;
+                    case R.id.logout:
+                        PreferenceUtil.getInstance(getApplicationContext()).removePreference("userToken");
+                        System.out.println("토큰지움");
+                        intent=new Intent(getApplicationContext(),LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        break;
+
                 }
 //                getSupportActionBar().setTitle();
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -285,13 +332,16 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
     protected void onDestroy() {
-        SharedPreferences.Editor editor = sf.edit();
-        editor.remove("pref");
-        editor.commit();
+//        SharedPreferences.Editor editor = sf.edit();
+//        editor.remove("pref");
+//        editor.commit();
+//        System.out.println("토큰지움");
+        PreferenceUtil.getInstance(getApplicationContext()).removePreference("userToken");
         System.out.println("토큰지움");
         super.onDestroy();
     }
@@ -322,16 +372,22 @@ public class MainActivity extends AppCompatActivity {
                         category[i] = jsonobject.getString("name");
                         switch (id) {
                             case "1":
+                                Departmentfragment.id=id;
                                 break;
                             case "2":
                                 Freefragment.id = id;
                                 break;
                             case "3":
+                                Advicefragment.id=id;
                                 break;
                             case "4":
+                                UsedFragment.id=id;
+                                break;
+                            case "5":
+                                PromoteFragment.id=id;
                                 break;
                         }
-                        System.out.println(id + " " + category);
+                        System.out.println(id + " " + category[i]);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -361,8 +417,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Gson gson = new Gson();
                     Author account = gson.fromJson(response.body().string(), Author.class);
-                    h_email.setText(account.getEmail());
-                    h_nickname.setText(account.getName());
+                    userName=account.getName();
+                    email=account.getEmail();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -8,13 +8,28 @@ public class Author implements Serializable {
   private String name;
   private String email;
   private String studentId;
+  private String password;
 
-    public Author(String email, String password, String name) {
+  public Author( String email, String name, String password,String studentId) {
+    this.name = name;
+    this.email = email;
+    this.studentId = studentId;
+    this.password = password;
+  }
+
+  public Author(String email, String password, String name) {
       this.id = id;
       this.name = name;
       this.email = email;
       this.studentId = studentId;
     }
+
+  public Author(Long id, String name, String email, String studentId) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.studentId = studentId;
+  }
 
   public void setId(Long id) {
     this.id = id;

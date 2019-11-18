@@ -31,10 +31,11 @@
 
                 <ImageView
                     android:id="@+id/mento_titleImg"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-
-                    android:src="@android:drawable/ic_menu_myplaces" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/myface" />
 
                 <TextView
                     android:id="@+id/mento_title"
@@ -53,6 +54,7 @@
                     android:layout_below="@id/mento_title"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_toRightOf="@id/mento_titleImg"
                     android:text="태히"
                     android:textSize="20dp" />
@@ -63,21 +65,38 @@
                 android:id="@+id/imageView2"
                 android:layout_width="300dp"
                 android:layout_height="180dp"
-                android:visibility="visible"
-                android:src="@android:drawable/ic_lock_lock"
-                 />
+                android:background="@drawable/work"
+
+                android:visibility="visible" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-
+                android:orientation="vertical">
                 <TextView
-                    android:id="@+id/mento_content"
+                    android:id="@+id/mento_start"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="3"
+                    android:text="00;00"
+                    android:gravity="center"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/mento_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="3"
+                    android:text="00;00"
+                    android:gravity="center"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/mento_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
                     android:text="자바, c 강의오세요"
+                    android:layout_marginBottom="20dp"
                     android:textSize="20dp" />
 
 

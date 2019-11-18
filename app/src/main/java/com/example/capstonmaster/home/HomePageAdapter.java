@@ -1,4 +1,4 @@
-package com.example.capstonmaster;
+package com.example.capstonmaster.home;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

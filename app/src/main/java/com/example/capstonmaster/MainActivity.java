@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.board.advice_board.Advicefragment;
 import com.example.capstonmaster.board.department_board.Departmentfragment;
@@ -28,6 +29,7 @@ import com.example.capstonmaster.board.free_board.Freefragment;
 import com.example.capstonmaster.board.promote_board.PromoteFragment;
 import com.example.capstonmaster.board.used_board.UsedFragment;
 import com.example.capstonmaster.dto.Author;
+import com.example.capstonmaster.home.HomePageAdapter;
 import com.example.capstonmaster.metoring.MentoPageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private int REQUEST_TEST = 1;
     TextView h_email;
     TextView h_nickname;
-    ImageButton imagebutton;
+//    ImageButton imagebutton;
     String id;
     String[] category;
     FragmentManager fragmentManager;
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     public static String userName;
     String email;
+    String src;
+    Author account;
+    ImageButton profileImg;
     TabLayout.TabLayoutOnPageChangeListener tabLayoutOnPageChangeListener;
     TabLayout.OnTabSelectedListener onTabSelectedListener;
 
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }
         this.InitializeLayout();
         getAccount();
-        while (userName==null) {
+        while (userName==null ||email==null) {
             try {
                 c++;
                 Thread.sleep(500);
@@ -113,18 +118,19 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
         h_email.setText(email);
         h_nickname.setText(userName);
+
         navigationView = findViewById(R.id.nav_view);
-        headerView = navigationView.getHeaderView(0);
-        ImageButton imagebutton = headerView.findViewById(R.id.imageButton);
-        imagebutton.setOnClickListener(new Button.OnClickListener() {
+        profileImg.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Mypage.class);
                 startActivity(intent);
             }
         });
+        Glide.with(this).load(src).error(R.drawable.circle).into(profileImg);
     }
 
     @Override
@@ -187,8 +193,8 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-
         headerView = navigationView.getHeaderView(0);
+        profileImg= headerView.findViewById(R.id.imageProfile);
         h_email = headerView.findViewById(R.id.h_email);
         h_nickname = headerView.findViewById(R.id.h_nickname);
 
@@ -235,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.history:
                         Toast.makeText(getApplicationContext(), "학과연혁", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, history.class);
+                        Intent intent = new Intent(MainActivity.this, History.class);
                         startActivity(intent);
 
                         break;
@@ -416,10 +422,13 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     Gson gson = new Gson();
-                    Author account = gson.fromJson(response.body().string(), Author.class);
+                    String a =response.body().string();
+                    System.out.println(a+"뭐라도찍어봐ㅠㅠ");
+                    account = gson.fromJson(a, Author.class);
                     userName=account.getName();
                     email=account.getEmail();
-
+                    src=account.getImg_src();
+                    System.out.println(src+" ~~~src ");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

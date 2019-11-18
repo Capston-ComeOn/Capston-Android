@@ -42,7 +42,7 @@ public class MentoRecycleAdapter extends RecyclerView.Adapter<MentoRecycleAdapte
                         // TODO : use pos.
                         Intent intent = new Intent(context, MentoDetailActivity.class);
                         intent.putExtra("detail", mento.get(pos));
-
+                        intent.putExtra("index",pos);
                         context.startActivity(intent);
                     }
                 }

@@ -2,10 +2,12 @@ package com.example.capstonmaster;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.Author;
 import com.google.gson.Gson;
@@ -24,6 +26,8 @@ public class Mypage extends AppCompatActivity {
   TextView mypage_email;
   TextView mypage_name;
   TextView mypage_std_id;
+  ImageView mypage_img;
+  Author account;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -33,8 +37,22 @@ public class Mypage extends AppCompatActivity {
     mypage_email = findViewById(R.id.mypage_email);
     mypage_name = findViewById(R.id.mypage_name);
     mypage_std_id = findViewById(R.id.mypage_std_id);
-
+    mypage_img = findViewById(R.id.mypage_image);
     getAccount();
+    int c=0;
+    while (account==null ) {
+      try {
+        c++;
+        Thread.sleep(500);
+        if (c % 5==0) {
+          getAccount();
+        }
+        System.out.println("getImgSrc 대기중");
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    Glide.with(this).load(account.getImgSrc()).override(300,200).error(R.drawable.circle).into(mypage_img);
   }
 
   public void getAccount() {
@@ -55,10 +73,12 @@ public class Mypage extends AppCompatActivity {
       public void onResponse(Call call, Response response) throws IOException {
         try {
           Gson gson = new Gson();
-          Author account = gson.fromJson(response.body().string(), Author.class);
+          account = gson.fromJson(response.body().string(), Author.class);
+
           mypage_email.setText(account.getEmail());
           mypage_name.setText(account.getName());
           mypage_std_id.setText(account.getStudentId());
+
         } catch (Exception e) {
           e.printStackTrace();
         }

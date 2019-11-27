@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Glide.with(this).load(src).error(R.drawable.circle).into(profileImg);
+        Glide.with(this).load(src).override(150,100).error(R.drawable.circle).into(profileImg);
     }
 
     @Override
@@ -432,7 +432,7 @@ public class MainActivity extends AppCompatActivity {
                     account = gson.fromJson(a, Author.class);
                     userName=account.getName();
                     email=account.getEmail();
-                    src=account.getImg_src();
+                    src=account.getImgSrc();
                     System.out.println(src+" ~~~src ");
                 } catch (Exception e) {
                     e.printStackTrace();

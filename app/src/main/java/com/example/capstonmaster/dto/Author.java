@@ -8,15 +8,23 @@ public class Author implements Serializable {
   private String name;
   private String email;
   private String studentId;
-  private String img_src;
+  private String imgSrc;
   private String password;
 
-  public String getImg_src() {
-    return img_src;
+  public String getImgSrc() {
+    return imgSrc;
   }
 
-  public void setImg_src(String img_src) {
-    this.img_src = img_src;
+  public void setImgSrc(String imgSrc) {
+    this.imgSrc = imgSrc;
+  }
+
+  public Author(Long id, String name, String email, String studentId, String imgSrc) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.studentId = studentId;
+    this.imgSrc = imgSrc;
   }
 
   public Author(Long id, String name, String email, String studentId) {
@@ -26,21 +34,7 @@ public class Author implements Serializable {
     this.studentId = studentId;
   }
 
-  public Author(Long id,  String name,String email,String img_src,  String studentId) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.studentId = studentId;
-    this.img_src = img_src;
-  }
 
-  public Author(String name, String email, String studentId, String img_src, String password) {
-    this.name = name;
-    this.email = email;
-    this.studentId = studentId;
-    this.img_src = img_src;
-    this.password = password;
-  }
 
   public Author(String email, String name, String password, String studentId) {
     this.name = name;

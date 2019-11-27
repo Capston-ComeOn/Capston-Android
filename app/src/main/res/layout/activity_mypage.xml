@@ -40,7 +40,7 @@
     android:textSize="15sp" />
 
   <ImageView
-    android:id="@+id/imageView"
+    android:id="@+id/mypage_image"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:layout_above="@+id/mypage_email"

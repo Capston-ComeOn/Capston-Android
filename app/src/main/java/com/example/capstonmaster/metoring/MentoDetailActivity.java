@@ -43,7 +43,7 @@ public class MentoDetailActivity extends AppCompatActivity {
     TextView startEnd;
     Button register;
     String userToken;
-    int index;
+    long index;
     MentoResponseVO vo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +52,11 @@ public class MentoDetailActivity extends AppCompatActivity {
         userToken =  PreferenceUtil.getInstance(this).getStringExtra("userToken");
         mento=new MentoResponseVO();
         Intent intent=getIntent();
-        index=intent.getIntExtra("index",0);
-        System.out.println(index+" index는~~~~~~~");
+//        index=intent.getIntExtra("index",0);
         mento= (MentoResponseVO) intent.getSerializableExtra("detail");
         System.out.println(mento.getContent()+" "+mento.getTitle());
+        index=mento.getId();
+                System.out.println(index+" index는~~~~~~~");
         title=findViewById(R.id.md_title);
         sid=findViewById(R.id.md_fullName);
         startEnd=findViewById(R.id.md_time);
@@ -77,19 +78,20 @@ public class MentoDetailActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                registerMentoring();
-                getMentoringDetail();
+                registerMentoring();
+//                getMentoringDetail();
             }
         });
     }
     public void registerMentoring() {
 
         OkHttpClient client = new OkHttpClient();
-String json=null;
+//String json=null;
+        RequestBody reqbody = RequestBody.create(null, new byte[0]);
         final Request request = new Request.Builder()
                 .header(getString(R.string.Authorization), "Bearer " + userToken)
                 .url(getString(R.string.ip) + "/api/mentoring/"+index)
-                .post(RequestBody.create(MediaType.parse("application/json"), json))
+                .post(reqbody)
                 .build();
         client.newCall(request).
                 enqueue(new Callback() {
@@ -112,7 +114,7 @@ String json=null;
 
         final Request request = new Request.Builder()
                 .header(getString(R.string.Authorization), "Bearer " + userToken)
-                .url(getString(R.string.ip) + "/api/mentoring/"+index)
+                .url(getString(R.string.ip) + "/api/mentoring/"+1)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override

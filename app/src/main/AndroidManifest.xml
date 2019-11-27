@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.example.capstonmaster">
+    package="com.example.capstonmaster">
 
-  <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher_appicon"
-    android:label="@string/app_name"
-    android:networkSecurityConfig="@xml/network_security_config"
-    android:roundIcon="@mipmap/ic_launcher_appicon_round"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme"
-    android:usesCleartextTraffic="true">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_appicon"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_appicon_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".message.MessageActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".history.HistoryFragment" />
+        <activity android:name=".intro">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-    <activity android:name=".history.HistoryFragment"></activity>
-    <activity android:name=".intro">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".metoring.MentoDetailActivity"></activity>
-    <activity android:name=".metoring.MentoWriteActivity" />
-    <activity android:name=".Mypage" />
-    <activity
-      android:name=".board.free_board.FreeWriteActivity"
-      android:theme="@style/AppTheme.NoActionBar" />
-    <activity
-      android:name=".board.free_board.FreeListDetail"
-      android:label="@string/title_activity_free_list_detail"
-      android:theme="@style/AppTheme.NoActionBar" />
-    <activity
-      android:name=".RegisterActivity"
-      android:theme="@style/AppTheme.NoActionBar" />
-    <activity
-      android:name=".LoginActivity"
-      android:theme="@style/AppTheme.NoActionBar"></activity>
-    <activity
-      android:name=".MainActivity"
-      android:label="@string/app_name"
-      android:theme="@style/AppTheme.NoActionBar" />
-  </application>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".metoring.MentoDetailActivity" />
+        <activity android:name=".metoring.MentoWriteActivity" />
+        <activity android:name=".Mypage" />
+        <activity
+            android:name=".board.free_board.FreeWriteActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".board.free_board.FreeListDetail"
+            android:label="@string/title_activity_free_list_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
 
 </manifest>

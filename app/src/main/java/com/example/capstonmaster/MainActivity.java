@@ -31,6 +31,7 @@ import com.example.capstonmaster.board.used_board.UsedFragment;
 import com.example.capstonmaster.dto.Author;
 import com.example.capstonmaster.home.HomePageAdapter;
 import com.example.capstonmaster.history.HistoryPagerAdapter;
+import com.example.capstonmaster.message.MessageActivity;
 import com.example.capstonmaster.metoring.MentoPageAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -153,7 +154,9 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tabLayout.getSelectedTabPosition());
                 return true;
             case R.id.action_message:
-                Toast.makeText(getApplicationContext(), " 메세지", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(this, MessageActivity.class);
+                startActivity(intent);
+//                Toast.makeText(getApplicationContext(), " 메세지", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

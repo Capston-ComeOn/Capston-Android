@@ -22,8 +22,8 @@
         android:id="@+id/md_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="284dp"
-
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
         android:layout_toRightOf="@id/imageView3"
         android:text="타이틀" />
 
@@ -32,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/md_title"
-        android:layout_marginLeft="209dp"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@id/imageView3"
         android:text="201314363 안태히" />
@@ -42,7 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/md_fullName"
-        android:layout_marginLeft="265dp"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@id/imageView3"
         android:text="모집 기간 : " />
@@ -52,7 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/md_time"
-        android:layout_marginLeft="264dp"
+       android:layout_alignParentEnd="true"
+        android:gravity="end"
         android:layout_marginTop="0dp"
         android:layout_toRightOf="@id/imageView3"
         android:text="수강 인원 : " />

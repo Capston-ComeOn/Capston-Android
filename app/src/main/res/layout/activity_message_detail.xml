@@ -7,21 +7,20 @@
     tools:context=".message.MessageActivity"
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/mtoolbar"
+        android:id="@+id/mdtoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3ABDFA"
-        app:titleTextColor="#FFFFFF"
-        app:navigationIcon="@drawable/ic_action_message"
+        android:background="#FFFFFF"
+        app:titleTextColor="#2B2A2A"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-       />
+        />
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/message_swipe_layout">
+        android:id="@+id/messageDe_swipe_layout">
 
         <ListView
-            android:id="@+id/message_list"
+            android:id="@+id/messageDe_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

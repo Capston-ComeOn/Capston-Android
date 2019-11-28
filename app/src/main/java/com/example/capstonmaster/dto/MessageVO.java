@@ -13,6 +13,10 @@ public class MessageVO {
         this.to = to;
     }
 
+    public MessageVO(String content) {
+        this.content = content;
+    }
+
     public String getContent() {
         return content;
     }

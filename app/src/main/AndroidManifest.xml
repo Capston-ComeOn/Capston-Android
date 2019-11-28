@@ -13,8 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".message.MessageActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".message.MessageWriteActivity"></activity>
+        <activity android:name=".message.MessageDetailActivity" />
+        <activity
+            android:name=".message.MessageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".history.HistoryFragment" />
         <activity android:name=".intro">
             <intent-filter>

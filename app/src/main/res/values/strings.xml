@@ -1,10 +1,10 @@
 <resources>
-  <string name="app_name">컴정 모여라! 컴.온!</string>
+    <string name="app_name">컴정 모여라! 컴.온!</string>
 
-  <string name="Authorization">Authorization</string>
-  <string name="ip">http://192.168.0.15:8090</string>
-  <!--  <string name="ip">https://computer-comeon.ga</string>-->
-  <string name="title_activity_free_list_detail">FreeListDetail</string>
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Authorization">Authorization</string>
+    <string name="ip">http://10.11.25.230:8090</string>
+    <!--  <string name="ip">https://computer-comeon.ga</string>-->
+    <string name="title_activity_free_list_detail">FreeListDetail</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

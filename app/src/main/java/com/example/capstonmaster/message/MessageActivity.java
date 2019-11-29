@@ -69,7 +69,7 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println(e);
-                System.out.println("getBoard실패");
+                System.out.println("getM실패");
             }
 
             @Override

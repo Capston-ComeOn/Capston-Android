@@ -59,6 +59,10 @@ public class MentoWriteActivity extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
                 String s = year + "-" + (month + 1) + "-" + dayOfMonth + " 00:00:00";
+                int dayOfMonths=dayOfMonth+6;
+                if(dayOfMonths>30){
+                    dayOfMonths-=30;
+                }
                 String e = year + "-" + (month + 1) + "-" + (dayOfMonth+ 6) + " 00:00:00";
 //                ""+year+"/"+(month+1)+"/" +dayOfMonth
 //                try {
@@ -81,7 +85,7 @@ public class MentoWriteActivity extends AppCompatActivity {
                     System.out.println(e);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     start=LocalDateTime.of(year,(month + 1),dayOfMonth,0,0,0,0000);
-              end=  LocalDateTime.of(year,(month + 1),(dayOfMonth+6),0,0,0,0000);
+              end=  LocalDateTime.of(year,(month + 1),dayOfMonths,0,0,0,0000);
                 System.out.println(end);
                 System.out.println(start);
 //                } catch (Exception e1) {

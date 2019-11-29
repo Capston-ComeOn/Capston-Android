@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import com.example.capstonmaster.R;
 import com.example.capstonmaster.Util.PreferenceUtil;
 import com.example.capstonmaster.dto.ArticleVO;
+import com.example.capstonmaster.dto.Author;
+import com.example.capstonmaster.dto.MessageRequestVO;
 import com.example.capstonmaster.dto.MessageVO;
 import com.google.gson.Gson;
 
@@ -32,6 +35,8 @@ public class MessageWriteActivity extends AppCompatActivity {
     String userToken;
     EditText editText;
     long fromId;
+    Author to,from;
+    Handler handler=new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +54,10 @@ public class MessageWriteActivity extends AppCompatActivity {
         });
         editText=findViewById(R.id.message_write);
         Intent intent=getIntent();
-        fromId=intent.getLongExtra("fromId",0);
+//        fromId=intent.getLongExtra("fromId",0);
+        to=(Author)intent.getSerializableExtra("from");
+        from=(Author)intent.getSerializableExtra("to");
+        fromId=from.getId();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,7 +71,7 @@ public class MessageWriteActivity extends AppCompatActivity {
             case R.id.action_mes_write:
                 OkHttpClient client = new OkHttpClient();
                 Gson gson = new Gson();
-                String json = gson.toJson(new MessageVO(editText.getText().toString()));
+                String json = gson.toJson(new MessageRequestVO(editText.getText().toString(),to));
                     final Request request = new Request.Builder()
                             .header(getString(R.string.Authorization), "Bearer " + userToken)
                             .url(getString(R.string.ip) + "/api/message/" + fromId)
@@ -87,4 +95,5 @@ public class MessageWriteActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

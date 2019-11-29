@@ -2,7 +2,7 @@ package com.example.capstonmaster.dto;
 
 import java.io.Serializable;
 
-public class MessageVO implements Serializable {
+public class MessageRequestVO implements Serializable {
     String content,created;
     long id;
     Author from,to;
@@ -15,9 +15,8 @@ public class MessageVO implements Serializable {
 //        this.to = to;
 //    }
 
-    public MessageVO(String content, Author from, Author to) {
+    public MessageRequestVO(String content, Author to) {
         this.content = content;
-        this.from = from;
         this.to = to;
     }
 

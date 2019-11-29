@@ -66,6 +66,8 @@ public class MessageDetailActivity extends AppCompatActivity {
             case R.id.action_send:
                 Intent intent=new Intent(this, MessageWriteActivity.class);
                 intent.putExtra("fromId",fromId);
+                intent.putExtra("from",arrayList.get(0).getFrom());
+                intent.putExtra("to",arrayList.get(0).getTo());
                 startActivity(intent);
                 return true;
             default:
